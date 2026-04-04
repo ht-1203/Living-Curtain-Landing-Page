@@ -6,20 +6,58 @@
     <title>Living Curtain - นิยามใหม่ของการอยู่อาศัยที่ยั่งยืน</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        // Tailwind Configuration
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            DEFAULT: '#1b4332',
+                            dark: '#52b788'
+                        },
+                        sage: {
+                            light: '#f1f8f4',
+                            dark: '#1a2e23'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: 'Anuphan', sans-serif;
+        /* บังคับให้การเลื่อนหน้าจอสมูทแบบคงที่ */
+        html {
             scroll-behavior: smooth;
         }
-        .bg-sage { background-color: #f1f8f4; }
-        .text-forest { color: #1b4332; }
-        .bg-forest { background-color: #1b4332; }
+        
+        body {
+            font-family: 'Anuphan', sans-serif;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        /* ป้องกันปัญหาเรื่อง Offset ของ Navbar เวลาเลื่อนไปที่ Section ต่างๆ */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* Custom Hero Gradients */
         .hero-gradient {
             background: linear-gradient(180deg, #ffffff 0%, #f1f8f4 100%);
         }
+        .dark .hero-gradient {
+            background: linear-gradient(180deg, #121212 0%, #1a2e23 100%);
+        }
+
         .card-shadow {
             box-shadow: 0 10px 30px rgba(27, 67, 50, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        .dark .card-shadow {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
         .leaf-float {
             animation: float 6s ease-in-out infinite;
         }
@@ -28,82 +66,99 @@
             50% { transform: translateY(-20px); }
             100% { transform: translateY(0px); }
         }
+
+        .toggle-dot {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .dark .toggle-dot {
+            transform: translateX(1.5rem);
+        }
     </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-white text-gray-800 dark:bg-zinc-900 dark:text-gray-100">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
+            <!-- Logo - กดแล้วกลับไปบนสุด -->
+            <a href="#" class="flex items-center space-x-2 cursor-pointer">
                 <span class="text-2xl">🌿</span>
-                <span class="text-xl font-semibold text-forest tracking-tight">Living Curtain</span>
-            </div>
-            <!-- ส่วนเมนูที่เพิ่มปุ่มเริ่มใช้ฟรีเข้ามาข้างๆ -->
-            <div class="flex items-center space-x-6 md:space-x-8 text-sm font-medium text-gray-600">
-                <a href="#mission" class="hover:text-forest transition border-b-2 border-transparent hover:border-forest hidden sm:inline">พันธกิจของเรา</a>
-                <a href="#impact" class="hover:text-forest transition border-b-2 border-transparent hover:border-forest hidden sm:inline">ผลลัพธ์ต่อโลก</a>
+                <span class="text-xl font-semibold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
+            </a>
+            
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <!-- Menu Links - แก้ไขเรื่องการเลื่อนให้ตรงจุด -->
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-300">
+                    <a href="#mission" class="hover:text-forest dark:hover:text-forest-dark transition-all border-b-2 border-transparent hover:border-forest py-1">พันธกิจของเรา</a>
+                    <a href="#impact" class="hover:text-forest dark:hover:text-forest-dark transition-all border-b-2 border-transparent hover:border-forest py-1">ผลลัพธ์ต่อโลก</a>
+                </div>
+
+                <!-- Theme Switcher -->
+                <button id="theme-toggle" class="flex items-center bg-gray-200 dark:bg-zinc-700 w-12 h-6 rounded-full p-1 relative transition-colors focus:outline-none overflow-hidden" aria-label="Toggle Dark Mode">
+                    <div class="toggle-dot bg-white dark:bg-forest-dark w-4 h-4 rounded-full shadow-sm flex items-center justify-center">
+                        <span id="theme-icon-inner" class="text-[10px]">🌙</span>
+                    </div>
+                </button>
                 
-                <!-- ปุ่มเริ่มใช้ฟรี (เชื่อมไปยัง Google Form) -->
-                <a href="#" onclick="openGoogleForm(event)" class="bg-forest text-white px-5 py-2.5 rounded-full hover:opacity-90 transition shadow-sm active:scale-95">
+                <!-- CTA Button -->
+                <a href="#" onclick="openGoogleForm(event)" class="bg-forest dark:bg-forest-dark text-white px-5 py-2.5 rounded-full hover:shadow-lg transition-all active:scale-95 text-sm font-medium">
                     เริ่มใช้ฟรี
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section: Brand Purpose -->
-    <section class="pt-32 pb-20 hero-gradient overflow-hidden">
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 hero-gradient overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-12 md:mb-0">
-                <span class="inline-block px-4 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
+                <span class="inline-block px-4 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
                     Sustainable Innovation
                 </span>
-                <h1 class="text-5xl md:text-6xl font-bold text-forest leading-tight mb-6">
+                <h1 class="text-5xl md:text-6xl font-bold text-forest dark:text-forest-dark leading-tight mb-6">
                     เมื่อเทคโนโลยี <br>โอบกอดธรรมชาติ
                 </h1>
-                <p class="text-lg text-gray-600 mb-8 max-w-md leading-relaxed">
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md leading-relaxed">
                     เราเชื่อว่าที่อยู่อาศัยที่ฉลาดที่สุด ไม่ใช่ที่ที่มีเทคโนโลยีมากที่สุด 
                     แต่คือที่ที่มนุษย์สามารถอยู่ร่วมกับธรรมชาติได้อย่างลงตัวและยั่งยืน
                 </p>
-                <div class="flex items-center space-x-4 text-forest font-semibold">
-                    <span class="w-12 h-[2px] bg-forest"></span>
+                <div class="flex items-center space-x-4 text-forest dark:text-forest-dark font-semibold">
+                    <span class="w-12 h-[2px] bg-forest dark:bg-forest-dark"></span>
                     <span>ออกแบบเพื่ออนาคตของคนและโลก</span>
                 </div>
             </div>
             <div class="md:w-1/2 relative">
-                <div class="leaf-float bg-green-50 rounded-3xl p-4 card-shadow relative z-10">
-                    <div class="aspect-[4/5] bg-gray-200 rounded-2xl overflow-hidden relative">
-                        <!-- รูปปกหน้าแรกเลย -->
+                <div class="leaf-float bg-green-50 dark:bg-zinc-800 rounded-3xl p-4 card-shadow relative z-10">
+                    <div class="aspect-[4/5] bg-gray-200 dark:bg-zinc-700 rounded-2xl overflow-hidden relative">
                         <img src="https://raw.githubusercontent.com/ht-1203/Living-Curtain-Landing-Page/main/4.png" alt="สดชื่นกับม่านต้นไม้ที่ระเบียง" class="object-cover w-full h-full">
                     </div>
                 </div>
-                <div class="absolute -top-10 -right-10 w-40 h-40 bg-green-100 rounded-full blur-3xl opacity-50"></div>
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-green-100 dark:bg-green-900/20 rounded-full blur-3xl opacity-50"></div>
             </div>
         </div>
     </section>
 
-    <!-- Mission: Good for You -->
-    <section id="mission" class="py-24 bg-white">
+    <!-- Mission -->
+    <section id="mission" class="py-24 bg-white dark:bg-zinc-900 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="md:w-1/2 order-2 md:order-1">
-                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Wellness" class="rounded-[40px] shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Wellness" class="rounded-[40px] shadow-2xl dark:opacity-80">
                 </div>
                 <div class="md:w-1/2 order-1 md:order-2">
-                    <h2 class="text-4xl font-bold text-forest mb-6">ดีต่อคุณ: คืนสมดุลให้ชีวิตคนเมือง</h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                    <h2 class="text-4xl font-bold text-forest dark:text-forest-dark mb-6">ดีต่อคุณ: คืนสมดุลให้ชีวิตคนเมือง</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
                         Living Curtain ไม่ใช่แค่เครื่องตกแต่ง แต่คือ "ปอด" ของห้องคุณ 
                         เราออกแบบมาเพื่อลดความเครียดสะสม เพิ่มสมาธิ และสร้างบรรยากาศที่ช่วยให้คุณได้พักผ่อนอย่างแท้จริง 
                         ผ่านเสียงใบไม้ที่พริ้วไหวและอากาศที่บริสุทธิ์จากธรรมชาติ 100%
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-start space-x-3">
-                            <span class="text-forest">✨</span>
-                            <span><strong>Biophilic Design:</strong> เชื่อมโยงจิตใจคุณเข้ากับธรรมชาติ ลดระดับคอร์ติซอล (ฮอร์โมนความเครียด)</span>
+                            <span class="text-forest dark:text-forest-dark">✨</span>
+                            <span><strong>Biophilic Design:</strong> เชื่อมโยงจิตใจคุณเข้ากับธรรมชาติ</span>
                         </li>
                         <li class="flex items-start space-x-3">
-                            <span class="text-forest">✨</span>
+                            <span class="text-forest dark:text-forest-dark">✨</span>
                             <span><strong>Oxygen Boost:</strong> เพิ่มออกซิเจนบริสุทธิ์ในพื้นที่ปิดตลอดวัน</span>
                         </li>
                     </ul>
@@ -112,68 +167,106 @@
         </div>
     </section>
 
-    <!-- Impact: Good for Earth -->
-    <section id="impact" class="py-24 bg-sage">
+    <!-- Impact -->
+    <section id="impact" class="py-24 bg-sage-light dark:bg-sage-dark transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold text-forest mb-6">ดีต่อโลก: ทุกตารางเมตรมีความหมาย</h2>
-            <p class="text-gray-600 max-w-2xl mx-auto mb-16 text-lg">
-                เราไม่ได้แค่ขายผลิตภัณฑ์ แต่เรากำลังสร้างเครือข่ายพื้นที่สีเขียวแนวตั้งในเมือง 
-                เพื่อลดปรากฏการณ์เกาะความเย็น (Urban Heat Island) และช่วยโลกใบนี้ไปพร้อมกัน
+            <h2 class="text-4xl font-bold text-forest dark:text-forest-dark mb-6">ดีต่อโลก: ทุกตารางเมตรมีความหมาย</h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-16 text-lg">
+                เรากำลังสร้างเครือข่ายพื้นที่สีเขียวแนวตั้งในเมือง เพื่อลดปรากฏการณ์เกาะความเย็น (Urban Heat Island)
             </p>
             
             <div class="grid md:grid-cols-3 gap-8 text-left">
-                <div class="bg-white p-10 rounded-[32px] card-shadow">
+                <!-- Card 1 -->
+                <div class="bg-white dark:bg-zinc-800 p-10 rounded-[32px] card-shadow border border-transparent dark:border-zinc-700">
                     <div class="text-3xl mb-4">🌍</div>
-                    <h3 class="text-xl font-bold text-forest mb-3">Net-Zero Cooling</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">ลดการใช้พลังงานไฟฟ้าของเครื่องปรับอากาศโดยตรง ช่วยลดการปล่อยคาร์บอนสู่ชั้นบรรยากาศอย่างยั่งยืน</p>
+                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Net-Zero Cooling</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ลดการใช้พลังงานไฟฟ้าของเครื่องปรับอากาศโดยตรง</p>
                 </div>
-                <div class="bg-white p-10 rounded-[32px] card-shadow">
+                <!-- Card 2 -->
+                <div class="bg-white dark:bg-zinc-800 p-10 rounded-[32px] card-shadow border border-transparent dark:border-zinc-700">
                     <div class="text-3xl mb-4">♻️</div>
-                    <h3 class="text-xl font-bold text-forest mb-3">Circular Ecosystem</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">ระบบรดน้ำอัจฉริยะที่ใช้ทรัพยากรน้ำอย่างคุ้มค่าที่สุด พร้อมวัสดุกระถางที่ย่อยสลายได้และเป็นมิตรต่อสิ่งแวดล้อม</p>
+                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Circular Ecosystem</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ระบบรดน้ำอัจฉริยะที่ใช้ทรัพยากรน้ำอย่างคุ้มค่าที่สุด</p>
                 </div>
-                <div class="bg-white p-10 rounded-[32px] card-shadow">
+                <!-- Card 3 -->
+                <div class="bg-white dark:bg-zinc-800 p-10 rounded-[32px] card-shadow border border-transparent dark:border-zinc-700">
                     <div class="text-3xl mb-4">🦋</div>
-                    <h3 class="text-xl font-bold text-forest mb-3">Urban Biodiversity</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">เพิ่มพื้นที่อยู่อาศัยให้แมลงผสมเกสรและนกในเมือง ช่วยรักษาระบบนิเวศน์ที่กำลังเลือนหายไปให้กลับคืนมา</p>
+                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Urban Biodiversity</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">เพิ่มพื้นที่อยู่อาศัยให้แมลงผสมเกสรและนกในเมือง</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Brand Commitment -->
-    <section class="py-24 bg-white overflow-hidden relative">
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 class="text-4xl font-bold text-forest mb-8 leading-tight">
-                "เราไม่ได้ออกแบบม่าน <br>แต่เราออกแบบวิถีชีวิตที่เป็นมิตรต่อโลก"
-            </h2>
-            <div class="w-20 h-1 bg-forest mx-auto rounded-full mb-8"></div>
-            <p class="text-gray-500 italic">Living Curtain — Since 2024</p>
-        </div>
-        <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
-            <svg width="400" height="400" viewBox="0 0 200 200">
-                <path fill="#1b4332" d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.7,-31.3,87,-15.7,85.6,-0.8C84.2,14.1,78.1,28.2,69.2,40.1C60.3,51.9,48.5,61.6,35.4,68.4C22.2,75.2,7.7,79.2,-7.3,77.8C-22.3,76.4,-37.8,69.5,-50.7,59.3C-63.5,49.1,-73.6,35.5,-78.9,20.4C-84.3,5.2,-84.9,-11.5,-79.8,-26.6C-74.8,-41.7,-64.1,-55.1,-50.7,-64.3C-37.3,-73.5,-21.2,-78.5,-4.8,-77.7C11.6,-76.9,23.3,-70.3,44.7,-76.4Z" transform="translate(100 100)" />
-            </svg>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-100 bg-white">
+    <footer class="py-12 border-t border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <div class="flex items-center justify-center space-x-2 mb-6">
                 <span class="text-xl">🌿</span>
-                <span class="text-lg font-bold text-forest tracking-tight">Living Curtain</span>
+                <span class="text-lg font-bold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
             </div>
-            <p class="text-sm text-gray-400">สร้างสรรค์ด้วยความรักที่มีต่อโลกและคุณ</p>
+            <p class="text-sm text-gray-400 dark:text-zinc-500">สร้างสรรค์ด้วยความรักที่มีต่อโลกและคุณ © 2024</p>
         </div>
     </footer>
 
     <script>
-    function openGoogleForm(event) {
-        event.preventDefault();
-        window.open('https://forms.gle/mKosqSVN2EjaukXx8', '_blank');
-    }
-    </script>
+        function openGoogleForm(event) {
+            event.preventDefault();
+            window.open('https://forms.gle/mKosqSVN2EjaukXx8', '_blank');
+        }
 
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIconInner = document.getElementById('theme-icon-inner');
+        const html = document.documentElement;
+
+        // ฟังก์ชันอัปเดต UI ไอคอนตามธีม
+        function updateThemeUI() {
+            if (html.classList.contains('dark')) {
+                themeIconInner.innerText = '☀️';
+            } else {
+                themeIconInner.innerText = '🌙';
+            }
+        }
+
+        // ระบบเปลี่ยนธีมที่เสถียร
+        themeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeUI();
+        });
+
+        // ตรวจสอบธีมตอนโหลดหน้าแรก (ล็อคค่าจากที่ผู้ใช้เลือก)
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        updateThemeUI();
+
+        // แก้ปัญหา Anchor Link เลื่อนไม่ตรงจุดและปัญหาการสลับโหมด
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
