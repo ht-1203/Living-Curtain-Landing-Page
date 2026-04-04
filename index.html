@@ -108,10 +108,11 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-2 cursor-pointer">
+            <!-- ปรับแก้ให้กดแล้วเลื่อนขึ้นบนสุดแบบ Smart -->
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center space-x-2 cursor-pointer hover:opacity-80 active:scale-95 transition-all outline-none">
                 <span class="text-2xl">🌿</span>
                 <span class="text-xl font-semibold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
-            </a>
+            </button>
             
             <div class="flex items-center space-x-4 md:space-x-8">
                 <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-300">
@@ -239,8 +240,8 @@
     <footer class="py-12 border-t border-gray-50 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <div class="flex items-center justify-center space-x-2 mb-6">
-                <span class="text-xl">🌿</span>
-                <span class="text-lg font-bold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
+                <span class="text-xl cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">🌿</span>
+                <span class="text-lg font-bold text-forest dark:text-forest-dark tracking-tight cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Living Curtain</span>
             </div>
             <p class="text-sm text-gray-400 dark:text-zinc-500">สร้างสรรค์ด้วยความรักที่มีต่อโลกและคุณ © 2024</p>
         </div>
