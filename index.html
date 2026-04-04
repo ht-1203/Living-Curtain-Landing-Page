@@ -33,17 +33,9 @@
             transition: background-color 0.5s ease, color 0.5s ease;
         }
         
-        /* ป้องกันปัญหาเรื่อง Offset ของ Navbar เวลาเลื่อนไปที่ Section ต่างๆ */
+        /* ปรับ Offset ให้เลื่อนลงมาแล้วพอดีสายตา */
         section {
-            scroll-margin-top: 80px;
-        }
-
-        /* Hero Gradient: ปรับให้เนียนเป็นขาวล้วนในส่วนล่าง */
-        .hero-gradient {
-            background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
-        }
-        .dark .hero-gradient {
-            background: #121212;
+            scroll-margin-top: 100px;
         }
 
         .card-shadow {
@@ -70,12 +62,44 @@
             transform: translateX(1.5rem);
         }
 
-        /* ลบพื้นหลังสีเขียวอ่อนที่ซ้อนอยู่หลังรูป */
-        .img-container-bg {
-            background-color: #ffffff;
+        /* Custom Slider Style */
+        .solar-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            outline: none;
+            transition: background 0.3s;
         }
-        .dark .img-container-bg {
-            background-color: #1a1a1a;
+        .dark .solar-slider {
+            background: #3f3f46;
+        }
+        .solar-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #fbbf24;
+            border: 3px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+            animation: pulse-sun 2s infinite;
+        }
+        .dark .solar-slider::-webkit-slider-thumb {
+            border-color: #18181b;
+        }
+
+        @keyframes pulse-sun {
+            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(251, 191, 36, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+        }
+
+        /* ปรับแต่ง Filter ของรูปภาพ */
+        #mission-img {
+            transition: filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
 </head>
@@ -84,7 +108,6 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo -->
             <a href="#" class="flex items-center space-x-2 cursor-pointer">
                 <span class="text-2xl">🌿</span>
                 <span class="text-xl font-semibold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
@@ -96,7 +119,6 @@
                     <a href="#impact" class="hover:text-forest dark:hover:text-forest-dark transition-all border-b-2 border-transparent hover:border-forest py-1">ผลลัพธ์ต่อโลก</a>
                 </div>
 
-                <!-- Theme Switcher -->
                 <button id="theme-toggle" class="flex items-center bg-gray-100 dark:bg-zinc-800 w-12 h-6 rounded-full p-1 relative transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
                     <div class="toggle-dot bg-white dark:bg-forest-dark w-4 h-4 rounded-full shadow-sm flex items-center justify-center">
                         <span id="theme-icon-inner" class="text-[10px]">🌙</span>
@@ -130,8 +152,7 @@
                 </div>
             </div>
             <div class="md:w-1/2 relative">
-                <!-- แก้ไข: เปลี่ยนพื้นหลังสีเขียวอ่อนหลังรูปเป็นสีขาวเนียน (img-container-bg) -->
-                <div class="leaf-float img-container-bg rounded-3xl p-2 relative z-10 transition-colors">
+                <div class="leaf-float bg-white dark:bg-zinc-900 rounded-3xl p-2 relative z-10 transition-colors">
                     <div class="aspect-[4/5] bg-gray-50 dark:bg-zinc-800 rounded-2xl overflow-hidden relative shadow-sm">
                         <img src="https://raw.githubusercontent.com/ht-1203/Living-Curtain-Landing-Page/main/4.png" alt="สดชื่นกับม่านต้นไม้ที่ระเบียง" class="object-cover w-full h-full">
                     </div>
@@ -141,20 +162,23 @@
         </div>
     </section>
 
-    <!-- Mission -->
-    <section id="mission" class="py-24 bg-white dark:bg-zinc-900 transition-colors duration-500">
+    <!-- Mission - ปรับเป็น items-center เพื่อให้ข้อความอยู่กึ่งกลางรูปภาพพอดี -->
+    <section id="mission" class="py-12 md:py-20 bg-white dark:bg-zinc-900 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="md:w-1/2 order-2 md:order-1">
-                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Wellness" class="rounded-[40px] shadow-xl dark:opacity-90">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                <div class="md:w-1/2 order-2 md:order-1 relative">
+                    <div class="relative rounded-[40px] overflow-hidden shadow-xl bg-gray-100 dark:bg-zinc-800">
+                        <img id="mission-img" src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Wellness" class="w-full h-auto object-cover">
+                    </div>
                 </div>
-                <div class="md:w-1/2 order-1 md:order-2">
+                <!-- ปรับแต่งส่วนเนื้อหาให้สมดุล -->
+                <div class="md:w-1/2 order-1 md:order-2 flex flex-col justify-center">
                     <h2 class="text-4xl font-bold text-forest dark:text-forest-dark mb-6">ดีต่อคุณ: คืนสมดุลให้ชีวิตคนเมือง</h2>
                     <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
                         Living Curtain ไม่ใช่แค่เครื่องตกแต่ง แต่คือ "ปอด" ของห้องคุณ 
                         เราออกแบบมาเพื่อลดความเครียดสะสม เพิ่มสมาธิ และสร้างบรรยากาศที่ช่วยให้คุณได้พักผ่อนอย่างแท้จริง
                     </p>
-                    <ul class="space-y-4">
+                    <ul class="space-y-4 mb-8">
                         <li class="flex items-start space-x-3">
                             <span class="text-forest dark:text-forest-dark">✨</span>
                             <span><strong>Biophilic Design:</strong> เชื่อมโยงจิตใจคุณเข้ากับธรรมชาติ</span>
@@ -164,12 +188,26 @@
                             <span><strong>Oxygen Boost:</strong> เพิ่มออกซิเจนบริสุทธิ์ในพื้นที่ปิดตลอดวัน</span>
                         </li>
                     </ul>
+
+                    <!-- Interaction: Solar Simulation Slider -->
+                    <div class="bg-gray-50 dark:bg-zinc-800/50 p-6 rounded-3xl border border-gray-100 dark:border-zinc-700/50 max-w-sm">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Solar Simulation</span>
+                            <span id="time-display" class="text-xs font-medium text-forest dark:text-forest-dark bg-white dark:bg-zinc-900 px-2 py-1 rounded-md shadow-sm">6:00 AM</span>
+                        </div>
+                        <input type="range" min="0" max="100" value="0" class="solar-slider mb-2" id="solar-input">
+                        <div class="flex justify-between text-[10px] text-gray-400 font-medium px-1">
+                            <span>รุ่งเช้า</span>
+                            <span>เที่ยงวัน</span>
+                            <span>ยามเย็น</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Impact - เปลี่ยนเป็นสีขาวบริสุทธิ์ 100% ตามภาพ -->
+    <!-- Impact -->
     <section id="impact" class="py-24 bg-white dark:bg-zinc-900 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold text-forest dark:text-forest-dark mb-6">ดีต่อโลก: ทุกตารางเมตรมีความหมาย</h2>
@@ -178,19 +216,16 @@
             </p>
             
             <div class="grid md:grid-cols-3 gap-8 text-left">
-                <!-- Card 1 -->
                 <div class="bg-white dark:bg-zinc-800/40 p-10 rounded-[32px] card-shadow border border-gray-50 dark:border-zinc-700/50">
                     <div class="text-3xl mb-4 grayscale-[0.5] dark:grayscale-[0.2] opacity-80">🌍</div>
                     <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Net-Zero Cooling</h3>
                     <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ลดการใช้พลังงานไฟฟ้าของเครื่องปรับอากาศโดยตรง</p>
                 </div>
-                <!-- Card 2 -->
                 <div class="bg-white dark:bg-zinc-800/40 p-10 rounded-[32px] card-shadow border border-gray-50 dark:border-zinc-700/50">
                     <div class="text-3xl mb-4 grayscale-[0.5] dark:grayscale-[0.2] opacity-80">♻️</div>
                     <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Circular Ecosystem</h3>
                     <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ระบบรดน้ำอัจฉริยะที่ใช้ทรัพยากรน้ำอย่างคุ้มค่าที่สุด</p>
                 </div>
-                <!-- Card 3 -->
                 <div class="bg-white dark:bg-zinc-800/40 p-10 rounded-[32px] card-shadow border border-gray-50 dark:border-zinc-700/50">
                     <div class="text-3xl mb-4 grayscale-[0.5] dark:grayscale-[0.2] opacity-80">🦋</div>
                     <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Urban Biodiversity</h3>
@@ -217,6 +252,7 @@
             window.open('https://forms.gle/mKosqSVN2EjaukXx8', '_blank');
         }
 
+        // Theme Logic
         const themeToggle = document.getElementById('theme-toggle');
         const themeIconInner = document.getElementById('theme-icon-inner');
         const html = document.documentElement;
@@ -241,22 +277,35 @@
             updateThemeUI();
         });
 
+        // Solar Simulation Logic
+        const solarInput = document.getElementById('solar-input');
+        const timeDisplay = document.getElementById('time-display');
+        const missionImg = document.getElementById('mission-img');
+
+        solarInput.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            let hour = Math.floor((val / 100) * 12) + 6;
+            let ampm = hour >= 12 ? 'PM' : 'AM';
+            let displayHour = hour > 12 ? hour - 12 : hour;
+            timeDisplay.innerText = `${displayHour}:00 ${ampm}`;
+
+            let saturateVal = 1 + (val / 100) * 0.5;
+            let sepiaVal = val / 200;
+            let contrastVal = 1 + (val > 40 && val < 60 ? 0.1 : 0);
+            
+            missionImg.style.filter = `saturate(${saturateVal}) sepia(${sepiaVal}) contrast(${contrastVal})`;
+        });
+
+        // Init
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            html.classList.add('dark');
-        } else {
-            html.classList.remove('dark');
-        }
+        if (savedTheme === 'dark') html.classList.add('dark');
         updateThemeUI();
 
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return;
-                }
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({ behavior: 'smooth' });
