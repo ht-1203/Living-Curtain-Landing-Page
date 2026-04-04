@@ -16,10 +16,6 @@
                         forest: {
                             DEFAULT: '#1b4332',
                             dark: '#52b788'
-                        },
-                        sage: {
-                            light: '#f1f8f4',
-                            dark: '#1a2e23'
                         }
                     }
                 }
@@ -42,20 +38,20 @@
             scroll-margin-top: 80px;
         }
 
-        /* Custom Hero Gradients */
+        /* Hero Gradient: ปรับให้เนียนเป็นขาวล้วนในส่วนล่าง */
         .hero-gradient {
-            background: linear-gradient(180deg, #ffffff 0%, #f1f8f4 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
         }
         .dark .hero-gradient {
-            background: linear-gradient(180deg, #121212 0%, #1a2e23 100%);
+            background: #121212;
         }
 
         .card-shadow {
-            box-shadow: 0 10px 30px rgba(27, 67, 50, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .dark .card-shadow {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
 
         .leaf-float {
@@ -63,7 +59,7 @@
         }
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
 
@@ -73,35 +69,41 @@
         .dark .toggle-dot {
             transform: translateX(1.5rem);
         }
+
+        /* ลบพื้นหลังสีเขียวอ่อนที่ซ้อนอยู่หลังรูป */
+        .img-container-bg {
+            background-color: #ffffff;
+        }
+        .dark .img-container-bg {
+            background-color: #1a1a1a;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 dark:bg-zinc-900 dark:text-gray-100">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 transition-colors duration-500">
+    <nav class="fixed w-full z-50 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo - กดแล้วกลับไปบนสุด -->
+            <!-- Logo -->
             <a href="#" class="flex items-center space-x-2 cursor-pointer">
                 <span class="text-2xl">🌿</span>
                 <span class="text-xl font-semibold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
             </a>
             
             <div class="flex items-center space-x-4 md:space-x-8">
-                <!-- Menu Links - แก้ไขเรื่องการเลื่อนให้ตรงจุด -->
                 <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600 dark:text-gray-300">
                     <a href="#mission" class="hover:text-forest dark:hover:text-forest-dark transition-all border-b-2 border-transparent hover:border-forest py-1">พันธกิจของเรา</a>
                     <a href="#impact" class="hover:text-forest dark:hover:text-forest-dark transition-all border-b-2 border-transparent hover:border-forest py-1">ผลลัพธ์ต่อโลก</a>
                 </div>
 
                 <!-- Theme Switcher -->
-                <button id="theme-toggle" class="flex items-center bg-gray-200 dark:bg-zinc-700 w-12 h-6 rounded-full p-1 relative transition-colors focus:outline-none overflow-hidden" aria-label="Toggle Dark Mode">
+                <button id="theme-toggle" class="flex items-center bg-gray-100 dark:bg-zinc-800 w-12 h-6 rounded-full p-1 relative transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
                     <div class="toggle-dot bg-white dark:bg-forest-dark w-4 h-4 rounded-full shadow-sm flex items-center justify-center">
                         <span id="theme-icon-inner" class="text-[10px]">🌙</span>
                     </div>
                 </button>
                 
-                <!-- CTA Button -->
-                <a href="#" onclick="openGoogleForm(event)" class="bg-forest dark:bg-forest-dark text-white px-5 py-2.5 rounded-full hover:shadow-lg transition-all active:scale-95 text-sm font-medium">
+                <a href="#" onclick="openGoogleForm(event)" class="bg-forest dark:bg-forest-dark text-white px-5 py-2.5 rounded-full hover:shadow-md transition-all active:scale-95 text-sm font-medium">
                     เริ่มใช้ฟรี
                 </a>
             </div>
@@ -109,10 +111,10 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 hero-gradient overflow-hidden">
+    <section id="home" class="pt-32 pb-20 bg-white dark:bg-zinc-900 overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-12 md:mb-0">
-                <span class="inline-block px-4 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
+                <span class="inline-block px-4 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
                     Sustainable Innovation
                 </span>
                 <h1 class="text-5xl md:text-6xl font-bold text-forest dark:text-forest-dark leading-tight mb-6">
@@ -128,12 +130,13 @@
                 </div>
             </div>
             <div class="md:w-1/2 relative">
-                <div class="leaf-float bg-green-50 dark:bg-zinc-800 rounded-3xl p-4 card-shadow relative z-10">
-                    <div class="aspect-[4/5] bg-gray-200 dark:bg-zinc-700 rounded-2xl overflow-hidden relative">
+                <!-- แก้ไข: เปลี่ยนพื้นหลังสีเขียวอ่อนหลังรูปเป็นสีขาวเนียน (img-container-bg) -->
+                <div class="leaf-float img-container-bg rounded-3xl p-2 relative z-10 transition-colors">
+                    <div class="aspect-[4/5] bg-gray-50 dark:bg-zinc-800 rounded-2xl overflow-hidden relative shadow-sm">
                         <img src="https://raw.githubusercontent.com/ht-1203/Living-Curtain-Landing-Page/main/4.png" alt="สดชื่นกับม่านต้นไม้ที่ระเบียง" class="object-cover w-full h-full">
                     </div>
                 </div>
-                <div class="absolute -top-10 -right-10 w-40 h-40 bg-green-100 dark:bg-green-900/20 rounded-full blur-3xl opacity-50"></div>
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-green-50 dark:bg-green-900/10 rounded-full blur-3xl opacity-30"></div>
             </div>
         </div>
     </section>
@@ -143,14 +146,13 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="md:w-1/2 order-2 md:order-1">
-                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Wellness" class="rounded-[40px] shadow-2xl dark:opacity-80">
+                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Wellness" class="rounded-[40px] shadow-xl dark:opacity-90">
                 </div>
                 <div class="md:w-1/2 order-1 md:order-2">
                     <h2 class="text-4xl font-bold text-forest dark:text-forest-dark mb-6">ดีต่อคุณ: คืนสมดุลให้ชีวิตคนเมือง</h2>
                     <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
                         Living Curtain ไม่ใช่แค่เครื่องตกแต่ง แต่คือ "ปอด" ของห้องคุณ 
-                        เราออกแบบมาเพื่อลดความเครียดสะสม เพิ่มสมาธิ และสร้างบรรยากาศที่ช่วยให้คุณได้พักผ่อนอย่างแท้จริง 
-                        ผ่านเสียงใบไม้ที่พริ้วไหวและอากาศที่บริสุทธิ์จากธรรมชาติ 100%
+                        เราออกแบบมาเพื่อลดความเครียดสะสม เพิ่มสมาธิ และสร้างบรรยากาศที่ช่วยให้คุณได้พักผ่อนอย่างแท้จริง
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-start space-x-3">
@@ -167,8 +169,8 @@
         </div>
     </section>
 
-    <!-- Impact -->
-    <section id="impact" class="py-24 bg-sage-light dark:bg-sage-dark transition-colors duration-500">
+    <!-- Impact - เปลี่ยนเป็นสีขาวบริสุทธิ์ 100% ตามภาพ -->
+    <section id="impact" class="py-24 bg-white dark:bg-zinc-900 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold text-forest dark:text-forest-dark mb-6">ดีต่อโลก: ทุกตารางเมตรมีความหมาย</h2>
             <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-16 text-lg">
@@ -177,20 +179,20 @@
             
             <div class="grid md:grid-cols-3 gap-8 text-left">
                 <!-- Card 1 -->
-                <div class="bg-white dark:bg-zinc-800 p-10 rounded-[32px] card-shadow border border-transparent dark:border-zinc-700">
-                    <div class="text-3xl mb-4">🌍</div>
+                <div class="bg-white dark:bg-zinc-800/40 p-10 rounded-[32px] card-shadow border border-gray-50 dark:border-zinc-700/50">
+                    <div class="text-3xl mb-4 grayscale-[0.5] dark:grayscale-[0.2] opacity-80">🌍</div>
                     <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Net-Zero Cooling</h3>
                     <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ลดการใช้พลังงานไฟฟ้าของเครื่องปรับอากาศโดยตรง</p>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-white dark:bg-zinc-800 p-10 rounded-[32px] card-shadow border border-transparent dark:border-zinc-700">
-                    <div class="text-3xl mb-4">♻️</div>
+                <div class="bg-white dark:bg-zinc-800/40 p-10 rounded-[32px] card-shadow border border-gray-50 dark:border-zinc-700/50">
+                    <div class="text-3xl mb-4 grayscale-[0.5] dark:grayscale-[0.2] opacity-80">♻️</div>
                     <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Circular Ecosystem</h3>
                     <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ระบบรดน้ำอัจฉริยะที่ใช้ทรัพยากรน้ำอย่างคุ้มค่าที่สุด</p>
                 </div>
                 <!-- Card 3 -->
-                <div class="bg-white dark:bg-zinc-800 p-10 rounded-[32px] card-shadow border border-transparent dark:border-zinc-700">
-                    <div class="text-3xl mb-4">🦋</div>
+                <div class="bg-white dark:bg-zinc-800/40 p-10 rounded-[32px] card-shadow border border-gray-50 dark:border-zinc-700/50">
+                    <div class="text-3xl mb-4 grayscale-[0.5] dark:grayscale-[0.2] opacity-80">🦋</div>
                     <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Urban Biodiversity</h3>
                     <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">เพิ่มพื้นที่อยู่อาศัยให้แมลงผสมเกสรและนกในเมือง</p>
                 </div>
@@ -199,7 +201,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-colors duration-500">
+    <footer class="py-12 border-t border-gray-50 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <div class="flex items-center justify-center space-x-2 mb-6">
                 <span class="text-xl">🌿</span>
@@ -219,7 +221,6 @@
         const themeIconInner = document.getElementById('theme-icon-inner');
         const html = document.documentElement;
 
-        // ฟังก์ชันอัปเดต UI ไอคอนตามธีม
         function updateThemeUI() {
             if (html.classList.contains('dark')) {
                 themeIconInner.innerText = '☀️';
@@ -228,7 +229,6 @@
             }
         }
 
-        // ระบบเปลี่ยนธีมที่เสถียร
         themeToggle.addEventListener('click', (e) => {
             e.preventDefault();
             if (html.classList.contains('dark')) {
@@ -241,7 +241,6 @@
             updateThemeUI();
         });
 
-        // ตรวจสอบธีมตอนโหลดหน้าแรก (ล็อคค่าจากที่ผู้ใช้เลือก)
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             html.classList.add('dark');
@@ -250,7 +249,6 @@
         }
         updateThemeUI();
 
-        // แก้ปัญหา Anchor Link เลื่อนไม่ตรงจุดและปัญหาการสลับโหมด
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -261,9 +259,7 @@
                 }
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
