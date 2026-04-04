@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living Curtain - เปลี่ยนค่าไฟเป็นอากาศบริสุทธิ์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Anuphan', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .bg-sage { background-color: #f1f8f4; }
+        .text-forest { color: #1b4332; }
+        .bg-forest { background-color: #1b4332; }
+        .hero-gradient {
+            background: linear-gradient(180deg, #ffffff 0%, #f1f8f4 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px rgba(27, 67, 50, 0.05);
+        }
+        .leaf-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl">🌿</span>
+                <span class="text-xl font-semibold text-forest tracking-tight">Living Curtain</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                <a href="#how-it-works" class="hover:text-forest transition">ทำงานยังไง</a>
+                <a href="#benefits" class="hover:text-forest transition">ประโยชน์</a>
+                <a href="#pricing" class="hover:text-forest transition">ราคา</a>
+            </div>
+            <a href="#register" class="bg-forest text-white px-6 py-2 rounded-full text-sm font-medium hover:opacity-90 transition">
+                เริ่มใช้ฟรี
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 hero-gradient overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <span class="inline-block px-4 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
+                    The Future of Home Cooling
+                </span>
+                <h1 class="text-5xl md:text-6xl font-bold text-forest leading-tight mb-6">
+                    คืนลมหายใจ <br>ให้หน้าต่างของคุณ
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 max-w-md">
+                    ม่านต้นไม้อัจฉริยะที่ช่วยลดอุณหภูมิห้อง 3-5°C และดักจับฝุ่น PM 2.5 
+                    โดยที่คุณไม่ต้องรดน้ำเองสักหยด
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#register" class="bg-forest text-white px-8 py-4 rounded-2xl text-center font-semibold text-lg hover:scale-105 transition shadow-lg">
+                        ทดลองใช้ฟรี 30 วัน
+                    </a>
+                    <div class="flex items-center justify-center space-x-2 text-sm text-gray-500">
+                        <span>⭐ ประเมินหน้างานฟรี</span>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="leaf-float bg-green-50 rounded-3xl p-4 card-shadow relative z-10">
+                    <!-- Placeholder Image for Living Curtain -->
+                    <div class="aspect-[4/5] bg-gray-200 rounded-2xl overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=800" alt="Living Curtain" class="object-cover w-full h-full opacity-90">
+                        <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur p-4 rounded-xl shadow-sm">
+                            <div class="flex justify-between items-center text-xs text-forest font-bold mb-1">
+                                <span>อุณหภูมิภายนอก 36°C</span>
+                                <span class="text-blue-600">ในห้อง 28°C</span>
+                            </div>
+                            <div class="h-1 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-forest" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Decorative Elements -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-green-100 rounded-full blur-3xl opacity-50"></div>
+                <div class="absolute -bottom-10 -left-10 w-60 h-60 bg-sage rounded-full blur-3xl opacity-70"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution -->
+    <section id="benefits" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-forest mb-4">ทำไมคุณต้องมี Living Curtain?</h2>
+                <div class="w-16 h-1 bg-forest mx-auto rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="p-8 rounded-3xl bg-sage transition hover:scale-105 duration-300">
+                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                        <span class="text-2xl">❄️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-forest mb-4">Passive Cooling</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        พืชคายน้ำสร้างเกราะความเย็น บังแสงแดดก่อนถึงกระจก ช่วยให้แอร์ทำงานน้อยลง ประหยัดค่าไฟทันที
+                    </p>
+                </div>
+                <div class="p-8 rounded-3xl bg-sage transition hover:scale-105 duration-300">
+                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                        <span class="text-2xl">🛡️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-forest mb-4">Dust Shield</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        ใบไม้ที่มีขนและยางธรรมชาติทำหน้าที่เป็นฟิลเตอร์ ดักจับ PM 2.5 ให้คุณเปิดหน้าต่างรับลมได้สบายใจ
+                    </p>
+                </div>
+                <div class="p-8 rounded-3xl bg-sage transition hover:scale-105 duration-300">
+                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                        <span class="text-2xl">☁️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-forest mb-4">Smart Lazy-Care</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        ระบบรดน้ำอัตโนมัติที่แม่นยำ เติมน้ำเพียงเดือนละครั้ง ไม่ต้องกังวลเรื่องการดูแล เราจัดการให้หมด
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / Subscription -->
+    <section id="pricing" class="py-24 bg-sage">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white rounded-[40px] p-8 md:p-16 card-shadow text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-forest"></div>
+                <h2 class="text-3xl font-bold text-forest mb-2">จ่ายน้อยกว่าค่าไฟที่ประหยัดได้</h2>
+                <p class="text-gray-500 mb-10">โมเดลที่คุณไม่ต้องเสี่ยง มั่นใจแล้วค่อยเริ่ม</p>
+                
+                <div class="flex flex-col items-center mb-10">
+                    <div class="text-sm font-bold text-gray-400 line-through">ปกติ 590.-</div>
+                    <div class="flex items-baseline">
+                        <span class="text-5xl font-bold text-forest">299</span>
+                        <span class="text-xl text-gray-500 ml-2">/ เดือน</span>
+                    </div>
+                </div>
+
+                <ul class="text-left space-y-4 max-w-xs mx-auto mb-10">
+                    <li class="flex items-center space-x-3">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span class="text-gray-600">ติดตั้งและตั้งค่าระบบฟรี</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span class="text-gray-600">รับประกันต้นไม้ เปลี่ยนฟรีทุกไตรมาส</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span class="text-gray-600">ดูแลระบบรดน้ำอัจฉริยะ 24 ชม.</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-green-500 font-bold">✓</span>
+                        <span class="text-gray-600">ยกเลิกได้ทุกเมื่อ ไม่มีสัญญาผูกมัด</span>
+                    </li>
+                </ul>
+
+                <button onclick="scrollToRegister()" class="w-full bg-forest text-white py-5 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg">
+                    จองสิทธิ์ทดลองใช้ฟรี
+                </button>
+                <p class="mt-4 text-xs text-gray-400 italic">*เริ่มเก็บค่าบริการหลังครบกำหนดทดลองใช้ 30 วัน</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section id="register" class="py-24 bg-white">
+        <div class="max-w-2xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-forest mb-4">ลงทะเบียนรับสิทธิ์ประเมินห้องฟรี</h2>
+                <p class="text-gray-500">เราจะส่งทีมงานเข้าไปดูทิศแดดและประเมินขนาดหน้าต่างให้คุณถึงที่</p>
+            </div>
+            <form class="space-y-6">
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-forest mb-2">ชื่อของคุณ</label>
+                        <input type="text" placeholder="สมชาย" class="w-full px-5 py-4 rounded-xl bg-gray-50 border border-gray-100 focus:outline-none focus:border-forest transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-forest mb-2">เบอร์โทรศัพท์</label>
+                        <input type="tel" placeholder="08x-xxx-xxxx" class="w-full px-5 py-4 rounded-xl bg-gray-50 border border-gray-100 focus:outline-none focus:border-forest transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-forest mb-2">ที่อยู่ / คอนโด (ระบุชั้นและทิศของระเบียงถ้าทราบ)</label>
+                    <textarea rows="3" placeholder="ระบุรายละเอียดเพื่อให้เราเตรียมอุปกรณ์ได้ถูกต้อง" class="w-full px-5 py-4 rounded-xl bg-gray-50 border border-gray-100 focus:outline-none focus:border-forest transition"></textarea>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <input type="checkbox" id="consent" class="w-5 h-5 text-forest accent-forest">
+                    <label for="consent" class="text-sm text-gray-500">ยินยอมให้ทีมงานติดต่อกลับเพื่อนนัดหมายวันเข้าบริการ</label>
+                </div>
+                <button type="submit" class="w-full bg-forest text-white py-5 rounded-2xl text-xl font-bold hover:opacity-90 transition">
+                    ส่งข้อมูลและจองสิทธิ์
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-6">
+                <span class="text-xl">🌿</span>
+                <span class="text-lg font-bold text-forest tracking-tight">Living Curtain</span>
+            </div>
+            <p class="text-sm text-gray-400">© 2024 Living Curtain. All rights reserved. Created with Love for Planet Earth.</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToRegister() {
+            document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
