@@ -86,6 +86,33 @@
             transform: translateX(1.5rem);
         }
 
+        /* Emerald Sparkling AI Text Animation */
+        .ai-green-glow {
+            background: linear-gradient(
+                to right, 
+                #2d6a4f 0%, 
+                #52b788 25%, 
+                #b7e4c7 50%, 
+                #52b788 75%, 
+                #2d6a4f 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: emerald-shift 4s linear infinite, emerald-sparkle 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 8px rgba(82, 183, 136, 0.5));
+            font-weight: 800;
+        }
+
+        @keyframes emerald-shift {
+            to { background-position: 200% center; }
+        }
+
+        @keyframes emerald-sparkle {
+            from { filter: drop-shadow(0 0 5px rgba(82, 183, 136, 0.4)); opacity: 0.9; }
+            to { filter: drop-shadow(0 0 15px rgba(183, 228, 199, 0.8)); opacity: 1; }
+        }
+
         .solar-slider {
             -webkit-appearance: none;
             width: 100%;
@@ -154,15 +181,16 @@
         </nav>
     </div>
 
-    <!-- Hero Section: Adjusted padding-top from pt-40 to pt-32, pb-24 to pb-16 -->
+    <!-- Hero Section -->
     <section id="home" class="pt-32 pb-16 bg-white dark:bg-zinc-900 overflow-hidden min-h-[90vh] flex items-center">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 lg:gap-16">
             <div class="md:w-1/2 mb-4 md:mb-0 text-left">
                 <div class="inline-block px-4 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full text-xs font-bold mb-4 tracking-widest uppercase">
                     Sustainable Innovation
                 </div>
-                <h1 class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark leading-tight mb-4">
-                    เมื่อเทคโนโลยี AI <br>ดูแลธรรมชาติแทนเรา
+                <!-- แก้ไขเฉพาะส่วน AI ให้เป็นสีเขียวมรกตวิบวับ -->
+                <h1 class="text-4xl md:text-5xl font-bold text-forest dark:text-forest-dark leading-tight mb-4 tracking-tight">
+                    เมื่อเทคโนโลยี <span class="ai-green-glow">AI</span> <br>หันมาดูแลธรรมชาติ
                 </h1>
                 <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-md leading-relaxed">
                     เราเชื่อว่าที่อยู่อาศัยที่ดีที่สุด ไม่ใช่ที่ที่มีเทคโนโลยีมากที่สุด 
@@ -185,7 +213,7 @@
         </div>
     </section>
 
-    <!-- Mission Section: Reduced py-24 to py-12 -->
+    <!-- Mission Section -->
     <section id="mission" class="py-12 bg-gray-50/30 dark:bg-zinc-800/20 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
@@ -230,7 +258,7 @@
         </div>
     </section>
 
-    <!-- Impact Section: Reduced py-24 to py-12 -->
+    <!-- Impact Section -->
     <section id="impact" class="py-12 bg-white dark:bg-zinc-900 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อเรา: ทุกตารางเมตรมีความหมาย</h2>
@@ -254,7 +282,7 @@
         </div>
     </section>
 
-    <!-- Footer - Dynamic Island: Reduced py-16 to py-12 -->
+    <!-- Footer - Dynamic Island -->
     <footer class="py-12 bg-gray-50/30 dark:bg-zinc-900 transition-colors duration-500 flex justify-center px-4 border-t border-gray-100 dark:border-zinc-800">
         <div class="dynamic-island w-fit px-10 py-6 flex flex-col items-center">
             <div class="flex items-center space-x-2 mb-4 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
