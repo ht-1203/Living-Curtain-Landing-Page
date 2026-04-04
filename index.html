@@ -23,7 +23,6 @@
         }
     </script>
     <style>
-        /* บังคับให้การเลื่อนหน้าจอสมูทแบบคงที่ */
         html {
             scroll-behavior: smooth;
         }
@@ -31,27 +30,23 @@
         body {
             font-family: 'Anuphan', sans-serif;
             transition: background-color 0.5s ease, color 0.5s ease;
-            
-            /* ป้องกันการลากคลุมข้อความ (Prevent Text Selection) */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
         }
 
-        /* ป้องกันการกดค้างหรือการบันทึกภาพบนมือถือ */
         img {
             -webkit-touch-callout: none;
             -webkit-user-drag: none;
             pointer-events: none; 
         }
         
-        /* ปรับ Offset ให้เลื่อนลงมาแล้วพอดีสายตา */
         section {
-            scroll-margin-top: 120px;
+            scroll-margin-top: 80px;
         }
 
-        /* Dynamic Island Style - ความโปร่งใส 0.5 */
+        /* Dynamic Island Style */
         .dynamic-island {
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(20px);
@@ -91,7 +86,6 @@
             transform: translateX(1.5rem);
         }
 
-        /* ปรับแต่ง Slider */
         .solar-slider {
             -webkit-appearance: none;
             width: 100%;
@@ -134,13 +128,11 @@
     <!-- Dynamic Island Navigation -->
     <div class="fixed top-6 left-0 w-full z-50 px-4 md:px-0 flex justify-center">
         <nav class="dynamic-island w-full max-w-[95%] md:max-w-fit px-3 py-2 md:py-2.5 md:px-3 flex justify-between items-center transition-all duration-500">
-            <!-- ส่วนของโลโก้ -->
             <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center space-x-2 cursor-pointer hover:opacity-80 active:scale-95 transition-all outline-none group px-3">
                 <span class="text-xl group-hover:rotate-12 transition-transform">🌿</span>
                 <span class="text-base font-semibold text-forest dark:text-forest-dark tracking-tight whitespace-nowrap">Living Curtain</span>
             </button>
             
-            <!-- ส่วนของลิงก์และปุ่มควบคุม -->
             <div class="flex items-center space-x-3 md:space-x-5">
                 <div class="hidden md:flex items-center space-x-5 text-sm font-medium text-gray-600 dark:text-gray-300">
                     <a href="#mission" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">พันธกิจของเรา</a>
@@ -162,17 +154,17 @@
         </nav>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-40 pb-20 bg-white dark:bg-zinc-900 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-            <div class="md:w-1/2 mb-8 md:mb-0 text-left">
-                <div class="inline-block px-4 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
+    <!-- Hero Section: Adjusted padding-top from pt-40 to pt-32, pb-24 to pb-16 -->
+    <section id="home" class="pt-32 pb-16 bg-white dark:bg-zinc-900 overflow-hidden min-h-[90vh] flex items-center">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 lg:gap-16">
+            <div class="md:w-1/2 mb-4 md:mb-0 text-left">
+                <div class="inline-block px-4 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full text-xs font-bold mb-4 tracking-widest uppercase">
                     Sustainable Innovation
                 </div>
-                <h1 class="text-5xl md:text-6xl font-bold text-forest dark:text-forest-dark leading-tight mb-6">
+                <h1 class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark leading-tight mb-4">
                     เมื่อเทคโนโลยี AI <br>หันมาดูแลธรรมชาติ
                 </h1>
-                <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md leading-relaxed">
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-md leading-relaxed">
                     เราเชื่อว่าที่อยู่อาศัยที่ดีที่สุด ไม่ใช่ที่ที่มีเทคโนโลยีมากที่สุด 
                     แต่คือที่ที่มนุษย์สามารถอยู่ร่วมกับธรรมชาติ และเทคโนโลยีได้อย่างลงตัว และยั่งยืน
                 </p>
@@ -182,8 +174,8 @@
                 </div>
             </div>
             <div class="md:w-1/2 relative px-4 md:px-0">
-                <div class="leaf-float bg-white dark:bg-zinc-900 rounded-[40px] p-2 relative z-10 transition-colors shadow-2xl">
-                    <div class="aspect-[4/5] bg-gray-50 dark:bg-zinc-800 rounded-[36px] overflow-hidden relative">
+                <div class="leaf-float relative z-10 transition-colors shadow-2xl rounded-[40px]">
+                    <div class="aspect-[4/5] bg-gray-50 dark:bg-zinc-800 rounded-[40px] overflow-hidden relative">
                         <img src="https://raw.githubusercontent.com/ht-1203/Living-Curtain-Landing-Page/main/Main.png" alt="Living Curtain Hero Image" class="object-cover w-full h-full transform hover:scale-105 transition-transform duration-1000">
                     </div>
                 </div>
@@ -193,40 +185,38 @@
         </div>
     </section>
 
-    <!-- Mission Section -->
-    <section id="mission" class="py-12 md:py-24 bg-white dark:bg-zinc-900 transition-colors duration-500 border-t border-gray-50 dark:border-zinc-800/50">
+    <!-- Mission Section: Reduced py-24 to py-12 -->
+    <section id="mission" class="py-12 bg-gray-50/30 dark:bg-zinc-800/20 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
+            <div class="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
                 <div class="md:w-1/2 order-2 md:order-1 relative group px-4 md:px-0">
                     <div class="relative rounded-[40px] overflow-hidden shadow-2xl bg-gray-100 dark:bg-zinc-800 aspect-[4/5]">
                         <img id="mission-img" src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Plant Wellness" class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute -inset-4 border-2 border-forest/10 dark:border-forest-dark/10 rounded-[44px] -z-10 group-hover:scale-105 transition-transform duration-500"></div>
                 </div>
                 
                 <div class="md:w-1/2 order-1 md:order-2 text-left">
-                    <h2 class="text-4xl font-bold text-forest dark:text-forest-dark mb-6">ดีต่อชีวิต: คืนสมดุลให้ชีวิตที่เร่งรีบ</h2>
-                    <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed text-lg">
+                    <h2 class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อชีวิต: คืนสมดุลให้ชีวิตที่เร่งรีบ</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
                         Living Curtain คือ "ปอด" ของบ้านที่ดูแลตัวเองได้ 
                         ทางเราใช้ระบบ AI ในการวิเคราะห์สภาพอากาศเพื่อควบคุมน้ำ และปุ๋ยชีวภาพอย่างแม่นยำ ลดเวลาการดูแล
                     </p>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                        <div class="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-zinc-800/50 rounded-2xl">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                        <div class="flex items-center space-x-3 p-4 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm">
                             <span class="text-xl">❄️</span>
                             <span class="text-sm font-medium">ลดความเครียด</span>
                         </div>
-                        <div class="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-zinc-800/50 rounded-2xl">
+                        <div class="flex items-center space-x-3 p-4 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm">
                             <span class="text-xl">🍃</span>
                             <span class="text-sm font-medium">ฟอกอากาศได้ดีขึ้น</span>
                         </div>
                     </div>
 
-                    <!-- Interaction: Solar Simulation -->
-                    <div class="bg-gray-50 dark:bg-zinc-800/50 p-8 rounded-[32px] border border-gray-100 dark:border-zinc-700/50" style="pointer-events: auto;">
-                        <div class="flex justify-between items-center mb-6">
+                    <div class="bg-white dark:bg-zinc-800 p-6 rounded-[32px] border border-gray-100 dark:border-zinc-700/50 shadow-sm" style="pointer-events: auto;">
+                        <div class="flex justify-between items-center mb-4">
                             <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Light Simulation</span>
-                            <span id="time-display" class="text-xs font-semibold text-forest dark:text-forest-dark bg-white dark:bg-zinc-900 px-3 py-1.5 rounded-full shadow-sm border border-gray-100 dark:border-zinc-800">06:00 AM</span>
+                            <span id="time-display" class="text-xs font-semibold text-forest dark:text-forest-dark bg-gray-50 dark:bg-zinc-900 px-3 py-1.5 rounded-full border border-gray-100 dark:border-zinc-800">06:00 AM</span>
                         </div>
                         <input type="range" min="0" max="100" value="0" class="solar-slider mb-4" id="solar-input">
                         <div class="flex justify-between text-[10px] text-gray-400 font-bold px-1 uppercase tracking-tighter">
@@ -240,32 +230,32 @@
         </div>
     </section>
 
-    <!-- Impact Section -->
-    <section id="impact" class="py-24 bg-gray-50/50 dark:bg-zinc-900 transition-colors duration-500">
+    <!-- Impact Section: Reduced py-24 to py-12 -->
+    <section id="impact" class="py-12 bg-white dark:bg-zinc-900 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold text-forest dark:text-forest-dark mb-6">ดีต่อเรา: ทุกตารางเมตรมีความหมาย</h2>
-            <div class="grid md:grid-cols-3 gap-8 mt-16">
-                <div class="bg-white dark:bg-zinc-800/40 p-10 rounded-[32px] card-shadow border border-white dark:border-zinc-700/30 text-left group hover:-translate-y-2 transition-all">
-                    <div class="w-14 h-14 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🌍</div>
-                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Net-Zero Cooling</h3>
+            <h2 class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อเรา: ทุกตารางเมตรมีความหมาย</h2>
+            <div class="grid md:grid-cols-3 gap-6 mt-10">
+                <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left group hover:-translate-y-2 transition-all">
+                    <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">🌍</div>
+                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Net-Zero Cooling</h3>
                     <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ช่วยลดอุณหภูมิบริเวณระเบียงได้ถึง 3-5 องศาเซลเซียส</p>
                 </div>
-                <div class="bg-white dark:bg-zinc-800/40 p-10 rounded-[32px] card-shadow border border-white dark:border-zinc-700/30 text-left group hover:-translate-y-2 transition-all">
-                    <div class="w-14 h-14 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">♻️</div>
-                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Smart Irrigation</h3>
+                <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left group hover:-translate-y-2 transition-all">
+                    <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">♻️</div>
+                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Smart Irrigation</h3>
                     <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ประหยัดน้ำมากกว่าการรดน้ำปกติถึง 40% ด้วยระบบไหลเวียน</p>
                 </div>
-                <div class="bg-white dark:bg-zinc-800/40 p-10 rounded-[32px] card-shadow border border-white dark:border-zinc-700/30 text-left group hover:-translate-y-2 transition-all">
-                    <div class="w-14 h-14 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🦋</div>
-                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-3">Urban Habitat</h3>
+                <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left group hover:-translate-y-2 transition-all">
+                    <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">🦋</div>
+                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Urban Habitat</h3>
                     <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">เพิ่มพื้นที่พักพิงให้สิ่งมีชีวิตเล็กๆ ที่สำคัญต่อเมือง</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer - Dynamic Island (Minimal Version) -->
-    <footer class="py-16 bg-white dark:bg-zinc-900 transition-colors duration-500 flex justify-center px-4">
+    <!-- Footer - Dynamic Island: Reduced py-16 to py-12 -->
+    <footer class="py-12 bg-gray-50/30 dark:bg-zinc-900 transition-colors duration-500 flex justify-center px-4 border-t border-gray-100 dark:border-zinc-800">
         <div class="dynamic-island w-fit px-10 py-6 flex flex-col items-center">
             <div class="flex items-center space-x-2 mb-4 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <span class="text-2xl group-hover:scale-110 transition-transform">🌿</span>
@@ -278,7 +268,6 @@
     </footer>
 
     <script>
-        // --- ระบบป้องกันการก๊อปปี้และดาวน์โหลด ---
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
             if (e.keyCode == 123) return false;
@@ -290,7 +279,6 @@
         };
         document.addEventListener('dragstart', event => event.preventDefault());
 
-        // --- ส่วนการทำงานปกติของเว็บ ---
         function openGoogleForm(event) {
             event.preventDefault();
             window.open('https://forms.gle/mKosqSVN2EjaukXx8', '_blank');
@@ -301,22 +289,13 @@
         const html = document.documentElement;
 
         function updateThemeUI() {
-            if (html.classList.contains('dark')) {
-                themeIconInner.innerText = '☀️';
-            } else {
-                themeIconInner.innerText = '🌙';
-            }
+            themeIconInner.innerText = html.classList.contains('dark') ? '☀️' : '🌙';
         }
 
         themeToggle.addEventListener('click', (e) => {
             e.preventDefault();
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
             updateThemeUI();
         });
 
@@ -330,7 +309,6 @@
             let ampm = hour >= 12 ? 'PM' : 'AM';
             let displayHour = hour > 12 ? hour - 12 : hour;
             if (displayHour === 0) displayHour = 12;
-            
             timeDisplay.innerText = `${displayHour}:00 ${ampm}`;
 
             let brightness = 1, saturate = 1, sepia = 0;
@@ -349,9 +327,7 @@
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
+                if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
