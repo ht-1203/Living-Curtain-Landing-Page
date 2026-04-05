@@ -65,7 +65,7 @@
         }
 
         .toggle-dot { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .dark .toggle-dot { transform: translateX(1rem); }
+        .dark .toggle-dot { transform: translateX(0.875rem); }
 
         .ai-green-glow {
             background: linear-gradient(to right, #2d6a4f 0%, #52b788 25%, #b7e4c7 50%, #52b788 75%, #2d6a4f 100%);
@@ -131,7 +131,7 @@
 
                 <div class="h-6 w-[1px] bg-gray-200 dark:bg-zinc-700 hidden md:block"></div>
 
-                <button id="theme-toggle" class="flex items-center bg-gray-100 dark:bg-zinc-800 w-10 md:w-12 h-6 rounded-full p-1 relative transition-colors overflow-hidden">
+                <button id="theme-toggle" class="flex items-center bg-gray-100 dark:bg-zinc-800 w-11 md:w-12 h-6 rounded-full p-1 relative transition-colors overflow-hidden shrink-0">
                     <div class="toggle-dot bg-white dark:bg-forest-dark w-4 h-4 rounded-full shadow-sm flex items-center justify-center overflow-hidden">
                         <span id="theme-icon-inner" class="text-[8px] leading-none">🌙</span>
                     </div>
