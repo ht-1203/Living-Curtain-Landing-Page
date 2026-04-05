@@ -417,14 +417,19 @@
             langDropdown.classList.remove('show'); // ปิด dropdown หลังเลือก
         }
 
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        themeToggle.onclick = () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+
+            themeToggle.onclick = () => {
             html.classList.toggle('dark');
             const isDark = html.classList.contains('dark');
             document.getElementById('theme-icon-inner').innerText = isDark ? '☀️' : '🌙';
             localStorage.setItem('preferredTheme', isDark ? 'dark' : 'light');
         };
+
+        window.addEventListener('scroll', () => {
+        localStorage.setItem('scrollPos', window.scrollY);
+        });
 
         function openGoogleForm(e) { e.preventDefault(); window.open('https://forms.gle/mKosqSVN2EjaukXx8', '_blank'); }
 
