@@ -421,7 +421,9 @@
         const html = document.documentElement;
         themeToggle.onclick = () => {
             html.classList.toggle('dark');
-            document.getElementById('theme-icon-inner').innerText = html.classList.contains('dark') ? '☀️' : '🌙';
+            const isDark = html.classList.contains('dark');
+            document.getElementById('theme-icon-inner').innerText = isDark ? '☀️' : '🌙';
+            localStorage.setItem('preferredTheme', isDark ? 'dark' : 'light');
         };
 
         function openGoogleForm(e) { e.preventDefault(); window.open('https://forms.gle/mKosqSVN2EjaukXx8', '_blank'); }
