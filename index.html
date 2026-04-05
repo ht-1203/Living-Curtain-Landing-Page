@@ -114,51 +114,63 @@
 </head>
 <body class="bg-white text-gray-800 dark:bg-zinc-900 dark:text-gray-100" oncontextmenu="return false;">
 
-    <!-- Navigation -->
-    <div class="fixed top-6 left-0 w-full z-50 px-4 md:px-0 flex justify-center">
-        <nav class="dynamic-island w-full max-w-[98%] md:max-w-fit px-2 py-2 md:py-2.5 md:px-3 flex justify-between items-center">
-            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center space-x-1 md:space-x-2 cursor-pointer hover:opacity-80 active:scale-95 transition-all px-2">
-                <span class="text-xl">🌿</span>
-                <span class="text-sm md:text-base font-semibold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
-            </button>
-            
-            <div class="flex items-center space-x-2 md:space-x-4">
-                <div class="hidden md:flex items-center space-x-5 text-sm font-medium text-gray-600 dark:text-gray-300">
-                    <a href="#mission" id="nav-mission" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">พันธกิจของเรา</a>
-                    <a href="#impact" id="nav-impact" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลลัพธ์ต่อโลก</a>
-                    <a href="#" id="nav-pricing" onclick="openPricing(event)" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ราคา</a>
-                </div>
+   <!-- Navigation -->
+<div class="fixed top-6 left-0 w-full z-50 px-4 md:px-0 flex justify-center">
+    <nav class="dynamic-island w-full max-w-[98%] md:max-w-fit px-2 py-2 md:py-2.5 md:px-3 flex justify-between items-center">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center space-x-1 md:space-x-2 cursor-pointer hover:opacity-80 active:scale-95 transition-all px-2">
+            <span class="text-xl">🌿</span>
+            <span class="text-sm md:text-base font-semibold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
+        </button>
 
-                <div class="h-6 w-[1px] bg-gray-200 dark:bg-zinc-700 hidden md:block"></div>
-
-                <button id="theme-toggle" class="flex items-center bg-gray-100 dark:bg-zinc-800 w-11 md:w-12 h-6 rounded-full p-1 relative transition-colors overflow-hidden shrink-0">
-                    <div class="toggle-dot bg-white dark:bg-forest-dark w-4 h-4 rounded-full shadow-sm flex items-center justify-center overflow-hidden">
-                        <span id="theme-icon-inner" class="text-[8px] leading-none">🌙</span>
-                    </div>
-                </button>
-
-                <div class="relative">
-                    <button id="lang-btn" class="flex items-center space-x-1 bg-gray-100 dark:bg-zinc-800 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 dark:text-gray-400"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        <span id="current-lang-text" class="text-[10px] font-bold text-gray-500 dark:text-gray-400 hidden sm:inline uppercase">TH</span>
-                    </button>
-                    <!-- Fix: Ensure dropdown has correct items and triggers -->
-                    <div id="lang-dropdown" class="lang-dropdown py-2">
-                        <div onclick="changeLanguage('th')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇹🇭</span> ไทย</div>
-                        <div onclick="changeLanguage('en')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇺🇸</span> English</div>
-                        <div onclick="changeLanguage('zh')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇨🇳</span> 中文</div>
-                        <div onclick="changeLanguage('ja')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇯🇵</span> 日本語</div>
-                        <div onclick="changeLanguage('de')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇩🇪</span> Deutsch</div>
-                        <div onclick="changeLanguage('fr')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇫🇷</span> Français</div>
-                    </div>
-                </div>
-                
-                <a href="#" id="cta-btn" onclick="openGoogleForm(event)" class="bg-forest dark:bg-forest-dark text-white px-3 md:px-5 py-2 rounded-full hover:shadow-md hover:brightness-110 transition-all active:scale-95 text-[11px] md:text-sm font-medium whitespace-nowrap">
-                    ปรึกษากับเราฟรี
-                </a>
+        <div class="flex items-center space-x-2 md:space-x-4">
+            <!-- Desktop nav -->
+            <div class="hidden md:flex items-center space-x-5 text-sm font-medium text-gray-600 dark:text-gray-300">
+                <a href="#mission" id="nav-mission" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">พันธกิจของเรา</a>
+                <a href="#impact" id="nav-impact" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลลัพธ์ต่อโลก</a>
+                <a href="#" id="nav-pricing" onclick="openPricing(event)" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ราคา</a>
             </div>
-        </nav>
-    </div>
+
+            <!-- Mobile hamburger -->
+            <div class="relative md:hidden">
+                <button id="mobile-menu-btn" class="flex items-center bg-gray-100 dark:bg-zinc-800 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 dark:text-gray-400"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <div id="mobile-menu" class="lang-dropdown py-2" style="min-width:180px;">
+                    <a href="#mission" id="nav-mission-m" onclick="closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">พันธกิจของเรา</a>
+                    <a href="#impact" id="nav-impact-m" onclick="closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ผลลัพธ์ต่อโลก</a>
+                    <a href="#" id="nav-pricing-m" onclick="openPricing(event); closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ราคา</a>
+                </div>
+            </div>
+
+            <div class="h-6 w-[1px] bg-gray-200 dark:bg-zinc-700 hidden md:block"></div>
+
+            <button id="theme-toggle" class="flex items-center bg-gray-100 dark:bg-zinc-800 w-11 md:w-12 h-6 rounded-full p-1 relative transition-colors overflow-hidden shrink-0">
+                <div class="toggle-dot bg-white dark:bg-forest-dark w-4 h-4 rounded-full shadow-sm flex items-center justify-center overflow-hidden">
+                    <span id="theme-icon-inner" class="text-[8px] leading-none">🌙</span>
+                </div>
+            </button>
+
+            <div class="relative">
+                <button id="lang-btn" class="flex items-center space-x-1 bg-gray-100 dark:bg-zinc-800 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 dark:text-gray-400"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <span id="current-lang-text" class="text-[10px] font-bold text-gray-500 dark:text-gray-400 hidden sm:inline uppercase">TH</span>
+                </button>
+                <div id="lang-dropdown" class="lang-dropdown py-2">
+                    <div onclick="changeLanguage('th')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇹🇭</span> ไทย</div>
+                    <div onclick="changeLanguage('en')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇺🇸</span> English</div>
+                    <div onclick="changeLanguage('zh')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇨🇳</span> 中文</div>
+                    <div onclick="changeLanguage('ja')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇯🇵</span> 日本語</div>
+                    <div onclick="changeLanguage('de')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇩🇪</span> Deutsch</div>
+                    <div onclick="changeLanguage('fr')" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100"><span>🇫🇷</span> Français</div>
+                </div>
+            </div>
+
+            <a href="#" id="cta-btn" onclick="openGoogleForm(event)" class="bg-forest dark:bg-forest-dark text-white px-3 md:px-5 py-2 rounded-full hover:shadow-md hover:brightness-110 transition-all active:scale-95 text-[11px] md:text-sm font-medium whitespace-nowrap">
+                ปรึกษากับเราฟรี
+            </a>
+        </div>
+    </nav>
+</div>
 
     <!-- Hero Section -->
     <section id="home" class="pt-32 pb-16 bg-white dark:bg-zinc-900 overflow-hidden min-h-[90vh] flex items-center">
@@ -441,6 +453,9 @@
             document.getElementById('nav-mission').innerText = t.navMission;
             document.getElementById('nav-impact').innerText = t.navImpact;
             document.getElementById('nav-pricing').innerText = t.navPricing;
+            document.getElementById('nav-mission-m').innerText = t.navMission;
+            document.getElementById('nav-impact-m').innerText = t.navImpact;
+            document.getElementById('nav-pricing-m').innerText = t.navPricing;
             document.getElementById('pricing-title').innerText = t.pricingTitle;
             document.getElementById('pricing-subtitle').innerText = t.pricingSubtitle;
             document.getElementById('pricing-badge').innerText = t.pricingBadge;
@@ -551,6 +566,14 @@
 function closePricing() {
     document.getElementById('pricing-modal').style.display = 'none';
         }
+
+
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuBtn.onclick = (e) => { e.stopPropagation(); mobileMenu.classList.toggle('show'); };
+function closeMobileMenu() { mobileMenu.classList.remove('show'); }
+window.addEventListener('click', () => mobileMenu.classList.remove('show'));
+
         
     </script>
 
