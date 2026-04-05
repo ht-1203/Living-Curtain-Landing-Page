@@ -128,6 +128,7 @@
                 <a href="#mission" id="nav-mission" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">พันธกิจของเรา</a>
                 <a href="#impact" id="nav-impact" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลลัพธ์ต่อโลก</a>
                 <a href="#" id="nav-pricing" onclick="openPricing(event)" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ราคา</a>
+                <a href="#" id="nav-portfolio" onclick="openPortfolio(event)" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลงานของเรา</a>
             </div>
 
             <!-- Mobile hamburger -->
@@ -139,6 +140,7 @@
                     <a href="#mission" id="nav-mission-m" onclick="closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">พันธกิจของเรา</a>
                     <a href="#impact" id="nav-impact-m" onclick="closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ผลลัพธ์ต่อโลก</a>
                     <a href="#" id="nav-pricing-m" onclick="openPricing(event); closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ราคา</a>
+                    <a href="#" id="nav-portfolio-m" onclick="openPortfolio(event); closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ผลงานของเรา</a>
                 </div>
             </div>
 
@@ -321,6 +323,11 @@
                 pricingNote: "* ราคายังไม่รวมค่าบริการรายปี · ติดต่อสอบถามเพิ่มเติมได้เลย",
                 pricingBadge: "แนะนำ",
                 pricingOnce: "ติดตั้งครั้งเดียว",
+                navPortfolio: "ผลงานของเรา",
+                portfolioTitle: "ผลงานของเรา", portfolioSubtitle: "โครงการที่เราภูมิใจ",
+                p1Title: "คอนโด Ideo Sukhumvit", p1Desc: "ระเบียงชั้น 12 · พื้นที่ 3 ม. · AI Monitoring",
+                p2Title: "บ้านเดี่ยว Lat Phrao",  p2Desc: "ระเบียงหน้าบ้าน · พื้นที่ 5 ม. · Pro Plan",
+                p3Title: "Office Silom Tower",     p3Desc: "ผนังสีเขียว · พื้นที่ 8 ม. · Premium Plan",
                 starterFeats: ["พื้นที่สูงสุด 2 ม.", "ระบบรดน้ำอัตโนมัติ", "AI Monitoring", "Bio-fertilizer"],
                 proFeats: ["พื้นที่สูงสุด 4 ม.", "ระบบรดน้ำอัตโนมัติ", "AI Monitoring", "Bio-fertilizer"],
                 premiumFeats: ["พื้นที่ไม่จำกัด", "ระบบรดน้ำอัตโนมัติ", "AI Monitoring", "Bio-fertilizer + Custom"],
@@ -344,6 +351,11 @@
                 pricingNote: "* Price excludes annual service fee · Contact us for more info",
                 pricingBadge: "Recommended",
                 pricingOnce: "One-time install",
+                navPortfolio: "Our Work",
+                portfolioTitle: "Our Work", portfolioSubtitle: "Projects we're proud of",
+                p1Title: "Ideo Sukhumvit Condo", p1Desc: "12th floor balcony · 3m area · AI Monitoring",
+                p2Title: "Lat Phrao House",      p2Desc: "Front balcony · 5m area · Pro Plan",
+                p3Title: "Silom Tower Office",   p3Desc: "Green wall · 8m area · Premium Plan",
                 starterFeats: ["Up to 2m area", "Auto irrigation", "AI Monitoring", "Bio-fertilizer"],
                 proFeats: ["Up to 4m area", "Auto irrigation", "AI Monitoring", "Bio-fertilizer"],
                 premiumFeats: ["Unlimited area", "Auto irrigation", "AI Monitoring", "Bio-fertilizer + Custom"],
@@ -367,6 +379,11 @@
                 pricingNote: "* 价格不含年度服务费 · 如需更多信息请联系我们",
                 pricingBadge: "推荐",
                 pricingOnce: "一次性安装",
+                navPortfolio: "我们的作品",
+                portfolioTitle: "我们的作品", portfolioSubtitle: "我们引以为豪的项目",
+                p1Title: "Ideo Sukhumvit公寓", p1Desc: "12楼阳台 · 3米区域 · AI监测",
+                p2Title: "Lat Phrao独栋别墅",  p2Desc: "前阳台 · 5米区域 · Pro方案",
+                p3Title: "Silom Tower办公室",  p3Desc: "绿化墙 · 8米区域 · Premium方案",
                 starterFeats: ["最多2米区域", "自动灌溉系统", "AI Monitoring", "Bio-fertilizer"],
                 proFeats: ["最多4米区域", "自动灌溉系统", "AI Monitoring", "Bio-fertilizer"],
                 premiumFeats: ["无限区域", "自动灌溉系统", "AI Monitoring", "Bio-fertilizer + Custom"],
@@ -390,6 +407,11 @@
                 pricingNote: "* 年間サービス料は別途 · 詳細はお問い合わせください",
                 pricingBadge: "おすすめ",
                 pricingOnce: "一回限りの設置",
+                navPortfolio: "実績",
+                portfolioTitle: "実績", portfolioSubtitle: "誇りに思うプロジェクト",
+                p1Title: "Ideo Sukhumvitマンション", p1Desc: "12階バルコニー · 3mエリア · AIモニタリング",
+                p2Title: "Lat Phrao一戸建て",        p2Desc: "フロントバルコニー · 5mエリア · Proプラン",
+                p3Title: "Silom Towerオフィス",      p3Desc: "グリーンウォール · 8mエリア · Premiumプラン",
                 starterFeats: ["最大2mのエリア", "自動灌漑システム", "AI Monitoring", "Bio-fertilizer"],
                 proFeats: ["最大4mのエリア", "自動灌漑システム", "AI Monitoring", "Bio-fertilizer"],
                 premiumFeats: ["無制限エリア", "自動灌漑システム", "AI Monitoring", "Bio-fertilizer + Custom"],
@@ -413,6 +435,11 @@
                 pricingNote: "* Preis exkl. Jahresgebühr · Kontaktieren Sie uns für mehr Infos",
                 pricingBadge: "Empfohlen",
                 pricingOnce: "Einmalige Installation",
+                navPortfolio: "Unsere Projekte",
+                portfolioTitle: "Unsere Projekte", portfolioSubtitle: "Projekte auf die wir stolz sind",
+                p1Title: "Ideo Sukhumvit Condo", p1Desc: "12. Stock Balkon · 3m Fläche · KI-Überwachung",
+                p2Title: "Lat Phrao Haus",       p2Desc: "Frontbalkon · 5m Fläche · Pro Plan",
+                p3Title: "Silom Tower Büro",     p3Desc: "Grüne Wand · 8m Fläche · Premium Plan",
                 starterFeats: ["Bis zu 2m Fläche", "Automatische Bewässerung", "AI Monitoring", "Bio-fertilizer"],
                 proFeats: ["Bis zu 4m Fläche", "Automatische Bewässerung", "AI Monitoring", "Bio-fertilizer"],
                 premiumFeats: ["Unbegrenzte Fläche", "Automatische Bewässerung", "AI Monitoring", "Bio-fertilizer + Custom"],
@@ -436,6 +463,11 @@
                 pricingNote: "* Prix hors frais annuels · Contactez-nous pour plus d'infos",
                 pricingBadge: "Recommandé",
                 pricingOnce: "Installation unique",
+                navPortfolio: "Nos Réalisations",
+                portfolioTitle: "Nos Réalisations", portfolioSubtitle: "Des projets dont nous sommes fiers",
+                p1Title: "Condo Ideo Sukhumvit", p1Desc: "Balcon 12e étage · 3m · Surveillance IA",
+                p2Title: "Maison Lat Phrao",     p2Desc: "Balcon avant · 5m · Plan Pro",
+                p3Title: "Bureau Silom Tower",   p3Desc: "Mur végétal · 8m · Plan Premium",
                 starterFeats: ["Jusqu'à 2m de surface", "Irrigation automatique", "AI Monitoring", "Bio-fertilizer"],
                 proFeats: ["Jusqu'à 4m de surface", "Irrigation automatique", "AI Monitoring", "Bio-fertilizer"],
                 premiumFeats: ["Surface illimitée", "Irrigation automatique", "AI Monitoring", "Bio-fertilizer + Custom"],
@@ -456,6 +488,16 @@
             document.getElementById('nav-mission-m').innerText = t.navMission;
             document.getElementById('nav-impact-m').innerText = t.navImpact;
             document.getElementById('nav-pricing-m').innerText = t.navPricing;
+            document.getElementById('nav-portfolio').innerText   = t.navPortfolio;
+            document.getElementById('nav-portfolio-m').innerText = t.navPortfolio;
+            document.getElementById('portfolio-title').innerText    = t.portfolioTitle;
+            document.getElementById('portfolio-subtitle').innerText = t.portfolioSubtitle;
+            document.getElementById('p1-title').innerText = t.p1Title;
+            document.getElementById('p1-desc').innerText  = t.p1Desc;
+            document.getElementById('p2-title').innerText = t.p2Title;
+            document.getElementById('p2-desc').innerText  = t.p2Desc;
+            document.getElementById('p3-title').innerText = t.p3Title;
+            document.getElementById('p3-desc').innerText  = t.p3Desc;
             document.getElementById('pricing-title').innerText = t.pricingTitle;
             document.getElementById('pricing-subtitle').innerText = t.pricingSubtitle;
             document.getElementById('pricing-badge').innerText = t.pricingBadge;
@@ -574,7 +616,15 @@ mobileMenuBtn.onclick = (e) => { e.stopPropagation(); mobileMenu.classList.toggl
 function closeMobileMenu() { mobileMenu.classList.remove('show'); }
 window.addEventListener('click', () => mobileMenu.classList.remove('show'));
 
-        
+
+        function openPortfolio(e) {
+    e.preventDefault();
+    document.getElementById('portfolio-modal').style.display = 'flex';
+}
+function closePortfolio() {
+    document.getElementById('portfolio-modal').style.display = 'none';
+}
+
     </script>
 
         <!-- Pricing Modal -->
@@ -624,6 +674,47 @@ window.addEventListener('click', () => mobileMenu.classList.remove('show'));
             </div>
         </div>
         <p id="pricing-note" class="text-center text-xs text-gray-400 mt-6">* ราคายังไม่รวมค่าบริการรายปี · ติดต่อสอบถามเพิ่มเติมได้เลย</p>
+    </div>
+</div>
+                <!-- Portfolio Modal -->
+<div id="portfolio-modal" class="fixed inset-0 z-[999] flex items-center justify-center px-4" style="display:none;">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closePortfolio()"></div>
+    <div class="relative bg-white dark:bg-zinc-900 rounded-[40px] shadow-2xl p-5 md:p-8 max-w-3xl w-full z-10 overflow-y-auto max-h-[90vh]">
+        <button onclick="closePortfolio()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl">✕</button>
+        <h2 id="portfolio-title" class="text-2xl font-bold text-forest dark:text-forest-dark mb-2 text-center">ผลงานของเรา</h2>
+        <p  id="portfolio-subtitle" class="text-gray-400 text-sm text-center mb-8">โครงการที่เราภูมิใจ</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <!-- Project 1 -->
+            <div class="border border-gray-100 dark:border-zinc-700 rounded-[28px] overflow-hidden">
+                <div class="aspect-[4/3] bg-gray-100 dark:bg-zinc-800">
+                    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                    <p id="p1-title" class="font-bold text-forest dark:text-forest-dark text-sm mb-1">คอนโด Ideo Sukhumvit</p>
+                    <p id="p1-desc" class="text-xs text-gray-400">ระเบียงชั้น 12 · พื้นที่ 3 ม. · AI Monitoring</p>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="border border-gray-100 dark:border-zinc-700 rounded-[28px] overflow-hidden">
+                <div class="aspect-[4/3] bg-gray-100 dark:bg-zinc-800">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                    <p id="p2-title" class="font-bold text-forest dark:text-forest-dark text-sm mb-1">บ้านเดี่ยว Lat Phrao</p>
+                    <p id="p2-desc" class="text-xs text-gray-400">ระเบียงหน้าบ้าน · พื้นที่ 5 ม. · Pro Plan</p>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="border border-gray-100 dark:border-zinc-700 rounded-[28px] overflow-hidden">
+                <div class="aspect-[4/3] bg-gray-100 dark:bg-zinc-800">
+                    <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                    <p id="p3-title" class="font-bold text-forest dark:text-forest-dark text-sm mb-1">Office Silom Tower</p>
+                    <p id="p3-desc" class="text-xs text-gray-400">ผนังสีเขียว · พื้นที่ 8 ม. · Premium Plan</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
     
