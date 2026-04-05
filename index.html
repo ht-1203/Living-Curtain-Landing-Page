@@ -126,6 +126,7 @@
                 <div class="hidden md:flex items-center space-x-5 text-sm font-medium text-gray-600 dark:text-gray-300">
                     <a href="#mission" id="nav-mission" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">พันธกิจของเรา</a>
                     <a href="#impact" id="nav-impact" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลลัพธ์ต่อโลก</a>
+                    <a href="#" id="nav-pricing" onclick="openPricing(event)" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ราคา</a>
                 </div>
 
                 <div class="h-6 w-[1px] bg-gray-200 dark:bg-zinc-700 hidden md:block"></div>
@@ -482,6 +483,67 @@
                 });
             }
         };
+
+            function openPricing(e) {
+            e.preventDefault();
+            const modal = document.getElementById('pricing-modal');
+            modal.style.display = 'flex';
+            }
+function closePricing() {
+    document.getElementById('pricing-modal').style.display = 'none';
+        }
+        
     </script>
+
+        <!-- Pricing Modal -->
+<div id="pricing-modal" class="fixed inset-0 z-[999] flex items-center justify-center px-4" style="display:none;">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closePricing()"></div>
+    <div class="relative bg-white dark:bg-zinc-900 rounded-[40px] shadow-2xl p-8 max-w-3xl w-full z-10">
+        <button onclick="closePricing()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl">✕</button>
+        <h2 class="text-2xl font-bold text-forest dark:text-forest-dark mb-2 text-center">เลือกแผนที่ใช่สำหรับคุณ</h2>
+        <p class="text-gray-400 text-sm text-center mb-8">ติดตั้งครั้งเดียว ดูแลตัวเองด้วย AI</p>
+        <div class="grid md:grid-cols-3 gap-4">
+            <!-- Starter -->
+            <div class="border border-gray-100 dark:border-zinc-700 rounded-[28px] p-6 text-left">
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Starter</p>
+                <p class="text-3xl font-black text-forest dark:text-forest-dark mb-1">฿12,900</p>
+                <p class="text-xs text-gray-400 mb-4">ติดตั้งครั้งเดียว</p>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                    <li>✅ พื้นที่สูงสุด 2 ม.</li>
+                    <li>✅ ระบบรดน้ำอัตโนมัติ</li>
+                    <li>❌ AI Monitoring</li>
+                    <li>❌ Bio-fertilizer</li>
+                </ul>
+            </div>
+            <!-- Pro (Highlight) -->
+            <div class="bg-forest dark:bg-forest-dark rounded-[28px] p-6 text-left text-white relative">
+                <span class="absolute top-4 right-4 text-[10px] font-bold bg-white/20 px-2 py-1 rounded-full">แนะนำ</span>
+                <p class="text-xs font-bold uppercase tracking-widest opacity-70 mb-2">Pro</p>
+                <p class="text-3xl font-black mb-1">฿24,900</p>
+                <p class="text-xs opacity-60 mb-4">ติดตั้งครั้งเดียว</p>
+                <ul class="text-sm space-y-2 opacity-90">
+                    <li>✅ พื้นที่สูงสุด 4 ม.</li>
+                    <li>✅ ระบบรดน้ำอัตโนมัติ</li>
+                    <li>✅ AI Monitoring</li>
+                    <li>✅ Bio-fertilizer</li>
+                </ul>
+            </div>
+            <!-- Premium -->
+            <div class="border border-gray-100 dark:border-zinc-700 rounded-[28px] p-6 text-left">
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Premium</p>
+                <p class="text-3xl font-black text-forest dark:text-forest-dark mb-1">฿39,900</p>
+                <p class="text-xs text-gray-400 mb-4">ติดตั้งครั้งเดียว</p>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                    <li>✅ พื้นที่ไม่จำกัด</li>
+                    <li>✅ ระบบรดน้ำอัตโนมัติ</li>
+                    <li>✅ AI Monitoring</li>
+                    <li>✅ Bio-fertilizer + Custom</li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center text-xs text-gray-400 mt-6">* ราคายังไม่รวมค่าบริการรายปี · ติดต่อสอบถามเพิ่มเติมได้เลย</p>
+    </div>
+</div>
+    
 </body>
 </html>
