@@ -309,6 +309,9 @@
                 pricingNote: "* ราคายังไม่รวมค่าบริการรายปี · ติดต่อสอบถามเพิ่มเติมได้เลย",
                 pricingBadge: "แนะนำ",
                 pricingOnce: "ติดตั้งครั้งเดียว",
+                starterFeats: ["พื้นที่สูงสุด 2 ม.", "ระบบรดน้ำอัตโนมัติ", "AI Monitoring", "Bio-fertilizer"],
+                proFeats: ["พื้นที่สูงสุด 4 ม.", "ระบบรดน้ำอัตโนมัติ", "AI Monitoring", "Bio-fertilizer"],
+                premiumFeats: ["พื้นที่ไม่จำกัด", "ระบบรดน้ำอัตโนมัติ", "AI Monitoring", "Bio-fertilizer + Custom"],
             },
             en: {
                 navMission: "Our Mission", navImpact: "Global Impact",  navPricing: "Pricing", cta: "Consult for Free",
@@ -329,6 +332,9 @@
                 pricingNote: "* Price excludes annual service fee · Contact us for more info",
                 pricingBadge: "Recommended",
                 pricingOnce: "One-time install",
+                starterFeats: ["Up to 2m area", "Auto irrigation", "AI Monitoring", "Bio-fertilizer"],
+                proFeats: ["Up to 4m area", "Auto irrigation", "AI Monitoring", "Bio-fertilizer"],
+                premiumFeats: ["Unlimited area", "Auto irrigation", "AI Monitoring", "Bio-fertilizer + Custom"],
             },
             zh: {
                 navMission: "我们的使命", navImpact: "全球影响", navPricing: "价格", cta: "免费咨询",
@@ -349,6 +355,9 @@
                 pricingNote: "* 价格不含年度服务费 · 如需更多信息请联系我们",
                 pricingBadge: "推荐",
                 pricingOnce: "一次性安装",
+                starterFeats: ["最多2米区域", "自动灌溉系统", "AI Monitoring", "Bio-fertilizer"],
+                proFeats: ["最多4米区域", "自动灌溉系统", "AI Monitoring", "Bio-fertilizer"],
+                premiumFeats: ["无限区域", "自动灌溉系统", "AI Monitoring", "Bio-fertilizer + Custom"],
             },
             ja: {
                 navMission: "ミッション", navImpact: "地球への影響", navPricing: "料金", cta: "無料相談",
@@ -369,6 +378,9 @@
                 pricingNote: "* 年間サービス料は別途 · 詳細はお問い合わせください",
                 pricingBadge: "おすすめ",
                 pricingOnce: "一回限りの設置",
+                starterFeats: ["最大2mのエリア", "自動灌漑システム", "AI Monitoring", "Bio-fertilizer"],
+                proFeats: ["最大4mのエリア", "自動灌漑システム", "AI Monitoring", "Bio-fertilizer"],
+                premiumFeats: ["無制限エリア", "自動灌漑システム", "AI Monitoring", "Bio-fertilizer + Custom"],
             },
             de: {
                 navMission: "Mission", navImpact: "Auswirkung", navPricing: "Preise", cta: "Gratis Beratung",
@@ -389,6 +401,9 @@
                 pricingNote: "* Preis exkl. Jahresgebühr · Kontaktieren Sie uns für mehr Infos",
                 pricingBadge: "Empfohlen",
                 pricingOnce: "Einmalige Installation",
+                starterFeats: ["Bis zu 2m Fläche", "Automatische Bewässerung", "AI Monitoring", "Bio-fertilizer"],
+                proFeats: ["Bis zu 4m Fläche", "Automatische Bewässerung", "AI Monitoring", "Bio-fertilizer"],
+                premiumFeats: ["Unbegrenzte Fläche", "Automatische Bewässerung", "AI Monitoring", "Bio-fertilizer + Custom"],
             },
             fr: {
                 navMission: "Mission", navImpact: "Impact Global",  navPricing: "Tarifs", cta: "Conseil Gratuit",
@@ -409,6 +424,9 @@
                 pricingNote: "* Prix hors frais annuels · Contactez-nous pour plus d'infos",
                 pricingBadge: "Recommandé",
                 pricingOnce: "Installation unique",
+                starterFeats: ["Jusqu'à 2m de surface", "Irrigation automatique", "AI Monitoring", "Bio-fertilizer"],
+                proFeats: ["Jusqu'à 4m de surface", "Irrigation automatique", "AI Monitoring", "Bio-fertilizer"],
+                premiumFeats: ["Surface illimitée", "Irrigation automatique", "AI Monitoring", "Bio-fertilizer + Custom"],
             }
         };
 
@@ -428,6 +446,11 @@
             document.getElementById('pricing-badge').innerText = t.pricingBadge;
             document.getElementById('pricing-note').innerText = t.pricingNote;
             document.querySelectorAll('.pricing-once').forEach(el => el.innerText = t.pricingOnce);
+            const uls = document.querySelectorAll('#pricing-modal ul');
+            t.starterFeats.forEach((feat, i) => uls[0].children[i].innerText = ['✅','✅','❌','❌'][i] + ' ' + feat);
+            t.proFeats.forEach((feat, i) => uls[1].children[i].innerText = '✅ ' + feat);
+            t.premiumFeats.forEach((feat, i) => uls[2].children[i].innerText = '✅ ' + feat);
+            
             document.getElementById('cta-btn').innerText = t.cta;
             document.getElementById('hero-tag').innerText = t.heroTag;
             document.getElementById('hero-title').innerHTML = t.heroTitle;
