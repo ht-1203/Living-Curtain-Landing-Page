@@ -291,7 +291,7 @@
     <script>
         const translations = {
             th: {
-                navMission: "พันธกิจของเรา", navImpact: "ผลลัพธ์ต่อโลก", cta: "ปรึกษากับเราฟรี",
+                navMission: "พันธกิจของเรา", navImpact: "ผลลัพธ์ต่อโลก", navPricing: "ราคา", cta: "ปรึกษากับเราฟรี",
                 heroTag: "Sustainable Innovation", heroTitle: 'เมื่อเทคโนโลยี <span class="ai-green-glow">AI</span> <br>หันมาดูแลธรรมชาติ',
                 heroDesc: "เราเชื่อว่าที่อยู่อาศัยที่ดีที่สุด ไม่ใช่ที่ที่มีเทคโนโลยีมากที่สุด แต่คือที่ที่มนุษย์สามารถอยู่ร่วมกับธรรมชาติ และเทคโนโลยีได้อย่างลงตัว และยั่งยืน",
                 heroFooter: "ออกแบบเพื่ออนาคต และสุขภาพระยะยาว",
@@ -306,7 +306,7 @@
                 footerCopy: "© 2024 Living Curtain. สงวนลิขสิทธิ์."
             },
             en: {
-                navMission: "Our Mission", navImpact: "Global Impact", cta: "Consult for Free",
+                navMission: "Our Mission", navImpact: "Global Impact",  navPricing: "Pricing", cta: "Consult for Free",
                 heroTag: "Sustainable Innovation", heroTitle: 'When <span class="ai-green-glow">AI</span> Technology <br>Cares for Nature',
                 heroDesc: "We believe the best home isn't the most high-tech one, but where humans, nature, and technology coexist perfectly and sustainably.",
                 heroFooter: "Designed for the Future and Long-term Wellness",
@@ -321,7 +321,7 @@
                 footerCopy: "© 2024 Living Curtain. All Rights Reserved."
             },
             zh: {
-                navMission: "我们的使命", navImpact: "全球影响", cta: "免费咨询",
+                navMission: "我们的使命", navImpact: "全球影响", navPricing: "价格", cta: "免费咨询",
                 heroTag: "可持续创新", heroTitle: '当 <span class="ai-green-glow">人工智能</span> 技术 <br>关爱自然',
                 heroDesc: "我们相信，最好的家园并非技术最先进的地方，而是人类、自然与技术完美和谐共存的地方。",
                 heroFooter: "为未来和长期健康而设计",
@@ -336,7 +336,7 @@
                 footerCopy: "© 2024 Living Curtain. 版权所有。"
             },
             ja: {
-                navMission: "ミッション", navImpact: "地球への影響", cta: "無料相談",
+                navMission: "ミッション", navImpact: "地球への影響", navPricing: "料金", cta: "無料相談",
                 heroTag: "持続可能なイノベーション", heroTitle: '<span class="ai-green-glow">AI</span> 技術が <br>自然を育む時',
                 heroDesc: "最高の住まいとは最新技術が詰まった場所ではなく、人間と自然、そしてテクノロジーが完璧に調和した場所だと信じています。",
                 heroFooter: "未来と長期的な健康のためのデザイン",
@@ -351,7 +351,7 @@
                 footerCopy: "© 2024 Living Curtain. 無断複写・転載を禁じます。"
             },
             de: {
-                navMission: "Mission", navImpact: "Auswirkung", cta: "Gratis Beratung",
+                navMission: "Mission", navImpact: "Auswirkung", navPricing: "Preise", cta: "Gratis Beratung",
                 heroTag: "Nachhaltige Innovation", heroTitle: 'Wenn <span class="ai-green-glow">KI</span> Technik <br>die Natur pflegt',
                 heroDesc: "Wir glauben, dass das beste Zuhause dort ist, wo Mensch, Natur und Technik nachhaltig koexistieren.",
                 heroFooter: "Design für die Zukunft und langfristiges Wohlbefinden",
@@ -366,7 +366,7 @@
                 footerCopy: "© 2024 Living Curtain. Alle Rechte vorbehalten."
             },
             fr: {
-                navMission: "Mission", navImpact: "Impact Global", cta: "Conseil Gratuit",
+                navMission: "Mission", navImpact: "Impact Global",  navPricing: "Tarifs", cta: "Conseil Gratuit",
                 heroTag: "Innovation Durable", heroTitle: 'Quand l\'<span class="ai-green-glow">IA</span> <br>soigne la nature',
                 heroDesc: "La meilleure maison est celle où l'homme, la nature et la technologie coexistent durablement.",
                 heroFooter: "Conçu pour l'avenir et le bien-être à long terme",
@@ -392,6 +392,7 @@
             const t = translations[lang] || translations['en'];
             document.getElementById('nav-mission').innerText = t.navMission;
             document.getElementById('nav-impact').innerText = t.navImpact;
+            document.getElementById('nav-pricing').innerText = t.navPricing;
             document.getElementById('cta-btn').innerText = t.cta;
             document.getElementById('hero-tag').innerText = t.heroTag;
             document.getElementById('hero-title').innerHTML = t.heroTitle;
