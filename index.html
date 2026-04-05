@@ -148,6 +148,47 @@
         #mission-img {
             transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        /* Clickable Language Selector Styles */
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%; 
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            border: 1px solid rgba(0,0,0,0.05);
+            overflow: hidden;
+            min-width: 150px;
+            z-index: 100;
+            margin-top: 12px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        /* Show class for JS toggle */
+        .lang-dropdown.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .dark .lang-dropdown {
+            background: #27272a;
+            border-color: rgba(255,255,255,0.08);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+        }
+        .lang-item {
+            transition: all 0.2s ease;
+        }
+        .lang-item:hover {
+            background: #f4f4f5;
+            padding-left: 1.25rem;
+        }
+        .dark .lang-item:hover {
+            background: #3f3f46;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 dark:bg-zinc-900 dark:text-gray-100" oncontextmenu="return false;">
@@ -160,10 +201,10 @@
                 <span class="text-base font-semibold text-forest dark:text-forest-dark tracking-tight whitespace-nowrap">Living Curtain</span>
             </button>
             
-            <div class="flex items-center space-x-3 md:space-x-5">
+            <div class="flex items-center space-x-3 md:space-x-4">
                 <div class="hidden md:flex items-center space-x-5 text-sm font-medium text-gray-600 dark:text-gray-300">
-                    <a href="#mission" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">พันธกิจของเรา</a>
-                    <a href="#impact" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลลัพธ์ต่อโลก</a>
+                    <a href="#mission" id="nav-mission" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">พันธกิจของเรา</a>
+                    <a href="#impact" id="nav-impact" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลลัพธ์ต่อโลก</a>
                 </div>
 
                 <div class="h-6 w-[1px] bg-gray-200 dark:bg-zinc-700 hidden md:block"></div>
@@ -173,8 +214,25 @@
                         <span id="theme-icon-inner" class="text-[10px]">🌙</span>
                     </div>
                 </button>
+
+                <!-- Language Selector (Click to Toggle) -->
+                <div class="relative" id="lang-container">
+                    <button id="lang-btn" class="flex items-center space-x-1.5 bg-gray-100 dark:bg-zinc-800 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 dark:text-gray-400"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <span id="current-lang-text" class="text-[10px] font-bold text-gray-500 dark:text-gray-400 hidden sm:inline uppercase">TH</span>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="lang-dropdown" class="lang-dropdown py-2">
+                        <button onclick="changeLanguage('th')" class="lang-item w-full text-left px-4 py-2.5 text-xs font-semibold flex items-center gap-2"><span>🇹🇭</span> ไทย</button>
+                        <button onclick="changeLanguage('en')" class="lang-item w-full text-left px-4 py-2.5 text-xs font-semibold flex items-center gap-2"><span>🇺🇸</span> English</button>
+                        <button onclick="changeLanguage('zh')" class="lang-item w-full text-left px-4 py-2.5 text-xs font-semibold flex items-center gap-2"><span>🇨🇳</span> 中文</button>
+                        <button onclick="changeLanguage('ja')" class="lang-item w-full text-left px-4 py-2.5 text-xs font-semibold flex items-center gap-2"><span>🇯🇵</span> 日本語</button>
+                        <button onclick="changeLanguage('de')" class="lang-item w-full text-left px-4 py-2.5 text-xs font-semibold flex items-center gap-2"><span>🇩🇪</span> Deutsch</button>
+                        <button onclick="changeLanguage('fr')" class="lang-item w-full text-left px-4 py-2.5 text-xs font-semibold flex items-center gap-2"><span>🇫🇷</span> Français</button>
+                    </div>
+                </div>
                 
-                <a href="#" onclick="openGoogleForm(event)" class="bg-forest dark:bg-forest-dark text-white px-5 py-2 rounded-full hover:shadow-md hover:brightness-110 transition-all active:scale-95 text-xs md:text-sm font-medium whitespace-nowrap">
+                <a href="#" id="cta-btn" onclick="openGoogleForm(event)" class="bg-forest dark:bg-forest-dark text-white px-5 py-2 rounded-full hover:shadow-md hover:brightness-110 transition-all active:scale-95 text-xs md:text-sm font-medium whitespace-nowrap">
                     ปรึกษากับเราฟรี
                 </a>
             </div>
@@ -185,20 +243,19 @@
     <section id="home" class="pt-32 pb-16 bg-white dark:bg-zinc-900 overflow-hidden min-h-[90vh] flex items-center">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 lg:gap-16">
             <div class="md:w-1/2 mb-4 md:mb-0 text-left">
-                <div class="inline-block px-4 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full text-xs font-bold mb-4 tracking-widest uppercase">
+                <div id="hero-tag" class="inline-block px-4 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full text-xs font-bold mb-4 tracking-widest uppercase">
                     Sustainable Innovation
                 </div>
-                <!-- แก้ไขเฉพาะส่วน AI ให้เป็นสีเขียวมรกตวิบวับ -->
-                <h1 class="text-4xl md:text-5xl font-bold text-forest dark:text-forest-dark leading-tight mb-4 tracking-tight">
+                <h1 id="hero-title" class="text-4xl md:text-5xl font-bold text-forest dark:text-forest-dark leading-tight mb-4 tracking-tight">
                     เมื่อเทคโนโลยี <span class="ai-green-glow">AI</span> <br>หันมาดูแลธรรมชาติ
                 </h1>
-                <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-md leading-relaxed">
+                <p id="hero-desc" class="text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-md leading-relaxed">
                     เราเชื่อว่าที่อยู่อาศัยที่ดีที่สุด ไม่ใช่ที่ที่มีเทคโนโลยีมากที่สุด 
                     แต่คือที่ที่มนุษย์สามารถอยู่ร่วมกับธรรมชาติ และเทคโนโลยีได้อย่างลงตัว และยั่งยืน
                 </p>
                 <div class="flex items-center space-x-4 text-forest dark:text-forest-dark font-semibold">
                     <span class="w-12 h-[2px] bg-forest dark:bg-forest-dark"></span>
-                    <span>ออกแบบเพื่ออนาคต และสุขภาพระยะยาว</span>
+                    <span id="hero-footer">ออกแบบเพื่ออนาคต และสุขภาพระยะยาว</span>
                 </div>
             </div>
             <div class="md:w-1/2 relative px-4 md:px-0">
@@ -219,13 +276,13 @@
             <div class="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
                 <div class="md:w-1/2 order-2 md:order-1 relative group px-4 md:px-0">
                     <div class="relative rounded-[40px] overflow-hidden shadow-2xl bg-gray-100 dark:bg-zinc-800 aspect-[4/5]">
-                        <img id="mission-img" src="https://raw.githubusercontent.com/ht-1203/Living-Curtain-Landing-Page/main/Cat.jpeg" alt="Plant Wellness" class="w-full h-full object-cover">
+                        <img id="mission-img" src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Plant Wellness" class="w-full h-full object-cover">
                     </div>
                 </div>
                 
                 <div class="md:w-1/2 order-1 md:order-2 text-left">
-                    <h2 class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อชีวิต: คืนสมดุลให้ชีวิตที่เร่งรีบ</h2>
-                    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
+                    <h2 id="mission-title" class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อชีวิต: คืนสมดุลให้ชีวิตที่เร่งรีบ</h2>
+                    <p id="mission-desc" class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
                         Living Curtain คือ "ปอด" ของบ้านที่ดูแลตัวเองได้ 
                         ทางเราใช้ระบบ AI ในการวิเคราะห์สภาพอากาศเพื่อควบคุมน้ำ และปุ๋ยชีวภาพอย่างแม่นยำ ลดเวลาการดูแล
                     </p>
@@ -233,24 +290,24 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                         <div class="flex items-center space-x-3 p-4 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm">
                             <span class="text-xl">❄️</span>
-                            <span class="text-sm font-medium">ลดความเครียด</span>
+                            <span id="mission-feat-1" class="text-sm font-medium">ลดความเครียด</span>
                         </div>
                         <div class="flex items-center space-x-3 p-4 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm">
                             <span class="text-xl">🍃</span>
-                            <span class="text-sm font-medium">ฟอกอากาศได้ดีขึ้น</span>
+                            <span id="mission-feat-2" class="text-sm font-medium">ฟอกอากาศได้ดีขึ้น</span>
                         </div>
                     </div>
 
                     <div class="bg-white dark:bg-zinc-800 p-6 rounded-[32px] border border-gray-100 dark:border-zinc-700/50 shadow-sm" style="pointer-events: auto;">
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Light Simulation</span>
+                            <span id="sim-tag" class="text-xs font-bold uppercase tracking-widest text-gray-400">Light Simulation</span>
                             <span id="time-display" class="text-xs font-semibold text-forest dark:text-forest-dark bg-gray-50 dark:bg-zinc-900 px-3 py-1.5 rounded-full border border-gray-100 dark:border-zinc-800">06:00 AM</span>
                         </div>
                         <input type="range" min="0" max="100" value="0" class="solar-slider mb-4" id="solar-input">
                         <div class="flex justify-between text-[10px] text-gray-400 font-bold px-1 uppercase tracking-tighter">
-                            <span>Sunrise</span>
-                            <span>Noon</span>
-                            <span>Sunset</span>
+                            <span id="sim-start">Sunrise</span>
+                            <span id="sim-mid">Noon</span>
+                            <span id="sim-end">Sunset</span>
                         </div>
                     </div>
                 </div>
@@ -261,22 +318,22 @@
     <!-- Impact Section -->
     <section id="impact" class="py-12 bg-white dark:bg-zinc-900 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อเรา: ทุกตารางเมตรมีความหมาย</h2>
+            <h2 id="impact-title" class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อเรา: ทุกตารางเมตรมีความหมาย</h2>
             <div class="grid md:grid-cols-3 gap-6 mt-10">
                 <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left group hover:-translate-y-2 transition-all">
                     <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">🌍</div>
-                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Net-Zero Cooling</h3>
-                    <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ช่วยลดอุณหภูมิบริเวณระเบียงได้ถึง 3-5 องศาเซลเซียส</p>
+                    <h3 id="card1-title" class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Net-Zero Cooling</h3>
+                    <p id="card1-desc" class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ช่วยลดอุณหภูมิบริเวณระเบียงได้ถึง 3-5 องศาเซลเซียส</p>
                 </div>
                 <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left group hover:-translate-y-2 transition-all">
                     <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">♻️</div>
-                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Smart Irrigation</h3>
-                    <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ประหยัดน้ำมากกว่าการรดน้ำปกติถึง 40% ด้วยระบบไหลเวียน</p>
+                    <h3 id="card2-title" class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Smart Irrigation</h3>
+                    <p id="card2-desc" class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ประหยัดน้ำมากกว่าการรดน้ำปกติถึง 40% ด้วยระบบไหลเวียน</p>
                 </div>
                 <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left group hover:-translate-y-2 transition-all">
                     <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">🦋</div>
-                    <h3 class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Urban Habitat</h3>
-                    <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">เพิ่มพื้นที่พักพิงให้สิ่งมีชีวิตเล็กๆ ที่สำคัญต่อเมือง</p>
+                    <h3 id="card3-title" class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Urban Habitat</h3>
+                    <p id="card3-desc" class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">เพิ่มพื้นที่พักพิงให้สิ่งมีชีวิตเล็กๆ ที่สำคัญต่อเมือง</p>
                 </div>
             </div>
         </div>
@@ -289,13 +346,219 @@
                 <span class="text-2xl group-hover:scale-110 transition-transform">🌿</span>
                 <span class="text-xl font-bold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
             </div>
-            <p class="text-[10px] uppercase tracking-[0.1em] text-gray-400 dark:text-zinc-600 font-bold">
+            <p id="footer-copy" class="text-[10px] uppercase tracking-[0.1em] text-gray-400 dark:text-zinc-600 font-bold">
                 © 2024 Living Curtain. All Rights Reserved.
             </p>
         </div>
     </footer>
 
     <script>
+        // Language Database
+        const translations = {
+            th: {
+                navMission: "พันธกิจของเรา",
+                navImpact: "ผลลัพธ์ต่อโลก",
+                cta: "ปรึกษากับเราฟรี",
+                heroTag: "Sustainable Innovation",
+                heroTitle: 'เมื่อเทคโนโลยี <span class="ai-green-glow">AI</span> <br>หันมาดูแลธรรมชาติ',
+                heroDesc: "เราเชื่อว่าที่อยู่อาศัยที่ดีที่สุด ไม่ใช่ที่ที่มีเทคโนโลยีมากที่สุด แต่คือที่ที่มนุษย์สามารถอยู่ร่วมกับธรรมชาติ และเทคโนโลยีได้อย่างลงตัว และยั่งยืน",
+                heroFooter: "ออกแบบเพื่ออนาคต และสุขภาพระยะยาว",
+                missionTitle: "ดีต่อชีวิต: คืนสมดุลให้ชีวิตที่เร่งรีบ",
+                missionDesc: "Living Curtain คือ \"ปอด\" ของบ้านที่ดูแลตัวเองได้ ทางเราใช้ระบบ AI ในการวิเคราะห์สภาพอากาศเพื่อควบคุมน้ำ และปุ๋ยชีวภาพอย่างแม่นยำ ลดเวลาการดูแล",
+                missionFeat1: "ลดความเครียด",
+                missionFeat2: "ฟอกอากาศได้ดีขึ้น",
+                simTag: "Light Simulation",
+                simStart: "Sunrise",
+                simMid: "Noon",
+                simEnd: "Sunset",
+                impactTitle: "ดีต่อเรา: ทุกตารางเมตรมีความหมาย",
+                card1Title: "Net-Zero Cooling",
+                card1Desc: "ช่วยลดอุณหภูมิบริเวณระเบียงได้ถึง 3-5 องศาเซลเซียส",
+                card2Title: "Smart Irrigation",
+                card2Desc: "ประหยัดน้ำมากกว่าการรดน้ำปกติถึง 40% ด้วยระบบไหลเวียน",
+                card3Title: "Urban Habitat",
+                card3Desc: "เพิ่มพื้นที่พักพิงให้สิ่งมีชีวิตเล็กๆ ที่สำคัญต่อเมือง",
+                footerCopy: "© 2024 Living Curtain. All Rights Reserved."
+            },
+            en: {
+                navMission: "Our Mission",
+                navImpact: "Global Impact",
+                cta: "Consult for Free",
+                heroTag: "Sustainable Innovation",
+                heroTitle: 'When <span class="ai-green-glow">AI</span> Technology <br>Cares for Nature',
+                heroDesc: "We believe the best home isn't the most high-tech one, but where humans, nature, and technology coexist perfectly and sustainably.",
+                heroFooter: "Designed for the Future and Long-term Wellness",
+                missionTitle: "Good for Life: Restoring Balance",
+                missionDesc: "Living Curtain is your home's self-sustaining \"lungs.\" Our AI analyzes weather conditions to precision-manage water and bio-fertilizers.",
+                missionFeat1: "Reduce Stress",
+                missionFeat2: "Better Air Purification",
+                simTag: "Light Simulation",
+                simStart: "Sunrise",
+                simMid: "Noon",
+                simEnd: "Sunset",
+                impactTitle: "Good for Us: Every Square Meter Matters",
+                card1Title: "Net-Zero Cooling",
+                card1Desc: "Reduces balcony temperatures by 3-5 degrees Celsius.",
+                card2Title: "Smart Irrigation",
+                card2Desc: "Saves up to 40% more water with recycled irrigation systems.",
+                card3Title: "Urban Habitat",
+                card3Desc: "Provides sanctuary for essential urban biodiversity.",
+                footerCopy: "© 2024 Living Curtain. All Rights Reserved."
+            },
+            zh: {
+                navMission: "我们的使命",
+                navImpact: "全球影响",
+                cta: "免费咨询",
+                heroTag: "可持续创新",
+                heroTitle: '当 <span class="ai-green-glow">人工智能</span> 技术 <br>关爱自然',
+                heroDesc: "我们相信，最好的家园并非技术最先进的地方，而是人类、自然与技术完美和谐共存的地方。",
+                heroFooter: "为未来和长期健康而设计",
+                missionTitle: "利于生活：重拾平衡",
+                missionDesc: "Living Curtain 是您家的自我维持“肺”。我们的 AI 分析天气状况，精确管理水分和生物肥料。",
+                missionFeat1: "减轻压力",
+                missionFeat2: "更好的空气净化",
+                simTag: "光照模拟",
+                simStart: "日出",
+                simMid: "正午",
+                simEnd: "日落",
+                impactTitle: "利于我们：每一平米都有意义",
+                card1Title: "零碳冷却",
+                card1Desc: "可将阳台温度降低 3-5 摄氏度。",
+                card2Title: "智能灌溉",
+                card2Desc: "通过循环灌溉系统节省高达 40% 的用水。",
+                card3Title: "城市生境",
+                card3Desc: "为城市中重要的生物多样性提供栖息地。",
+                footerCopy: "© 2024 Living Curtain. 版权所有。"
+            },
+            ja: {
+                navMission: "ミッション",
+                navImpact: "地球への影響",
+                cta: "無料相談",
+                heroTag: "持続可能なイノベーション",
+                heroTitle: '<span class="ai-green-glow">AI</span> 技術が <br>自然を育む時',
+                heroDesc: "最高の住まいとは最新技術ที่詰まった場所ではなく、人間と自然、และテクノロジーが完璧に調和し、持続可能な場所だと信じています。",
+                heroFooter: "未来と長期的な健康のためのデザイン",
+                missionTitle: "暮らしに豊かさを：バランスの回復",
+                missionDesc: "Living Curtain は家の「肺」です。AIが天候を分析し、水やりや有機肥料を正確に管理。メンテナンスの手間を省きます。",
+                missionFeat1: "ストレス軽減",
+                missionFeat2: "空気清浄機能の向上",
+                simTag: "光シミュレーション",
+                simStart: "日の出",
+                simMid: "正午",
+                simEnd: "日没",
+                impactTitle: "私たちのために：全ての空間に意味を",
+                card1Title: "ネットゼロ・クーリング",
+                card1Desc: "バルコニーの温度を 3-5 度下げることができます。",
+                card2Title: "スマート灌溉",
+                card2Desc: "循環システムにより、通常の水やりより 40% 節水します。",
+                card3Title: "アーバン・ハビタット",
+                card3Desc: "都市の重要な生物多様性のための隠れ家を提供します。",
+                footerCopy: "© 2024 Living Curtain. 無断複写・転載を禁じます。"
+            },
+            de: {
+                navMission: "Mission",
+                navImpact: "Auswirkung",
+                cta: "Kostenlose Beratung",
+                heroTag: "Nachhaltige Innovation",
+                heroTitle: 'Wenn <span class="ai-green-glow">KI</span> Technologie <br>die Natur pflegt',
+                heroDesc: "Wir glauben, dass das beste Zuhause nicht das technologischste ist, sondern eines, in dem Mensch, Natur und Technik nachhaltig koexistieren.",
+                heroFooter: "Design für die Zukunft und langfristiges Wohlbefinden",
+                missionTitle: "Gut fürs Leben: Balance finden",
+                missionDesc: "Living Curtain ist die selbsterhaltende \"Lunge\" Ihres Hauses. Unsere KI analysiert das Wetter, um Wasser und Biodünger präzise zu steuern.",
+                missionFeat1: "Stress abbauen",
+                missionFeat2: "Bessere Luftreinigung",
+                simTag: "Lichtsimulation",
+                simStart: "Sonnenaufgang",
+                simMid: "Mittag",
+                simEnd: "Sonnenuntergang",
+                impactTitle: "Gut für uns: Jeder Quadratmeter zählt",
+                card1Title: "Net-Zero Kühlung",
+                card1Desc: "Senkt die Balkontemperatur um 3-5 Grad Celsius.",
+                card2Title: "Smarte Bewässerung",
+                card2Desc: "Spart bis zu 40% Wasser durch Kreislaufsysteme.",
+                card3Title: "Städtischer Lebensraum",
+                card3Desc: "Bietet Schutzraum für wichtige städtische Biodiversität.",
+                footerCopy: "© 2024 Living Curtain. Alle Rechte vorbehalten."
+            },
+            fr: {
+                navMission: "Notre Mission",
+                navImpact: "Impact Global",
+                cta: "Consultation Gratuite",
+                heroTag: "Innovation Durable",
+                heroTitle: 'Quand l\'<span class="ai-green-glow">IA</span> <br>prend soin de la nature',
+                heroDesc: "Nous croyons que la meilleure maison n'est pas la plus technologique, mais celle où l'homme, la nature et la technologie coexistent durablement.",
+                heroFooter: "Conçu pour l'avenir et le bien-être à long terme",
+                missionTitle: "Bon pour la vie : Retrouver l'équilibre",
+                missionDesc: "Living Curtain est le \"poumon\" autonome de votre maison. Notre IA analyse la météo pour gérer l'eau et les engrais bio avec précision.",
+                missionFeat1: "Réduire le stress",
+                missionFeat2: "Meilleure purification de l'air",
+                simTag: "Simulation de lumière",
+                simStart: "Lever du soleil",
+                simMid: "Midi",
+                simEnd: "Coucher du soleil",
+                impactTitle: "Bon pour nous : Chaque mètre carré compte",
+                card1Title: "Refroidissement Net-Zero",
+                card1Desc: "Réduit la température du balcon de 3 à 5 degrees Celsius.",
+                card2Title: "Irrigation Intelligente",
+                card2Desc: "Économise jusqu'à 40 % d'eau grâce au recyclage.",
+                card3Title: "Habitat Urbain",
+                card3Desc: "Offre un sanctuaire pour la biodiversité urbaine.",
+                footerCopy: "© 2024 Living Curtain. Tous droits réservés."
+            }
+        };
+
+        // --- NEW CLICKABLE LANGUAGE LOGIC ---
+        const langBtn = document.getElementById('lang-btn');
+        const langDropdown = document.getElementById('lang-dropdown');
+
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!langDropdown.contains(e.target) && !langBtn.contains(e.target)) {
+                langDropdown.classList.remove('show');
+            }
+        });
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            document.getElementById('nav-mission').innerText = t.navMission;
+            document.getElementById('nav-impact').innerText = t.navImpact;
+            document.getElementById('cta-btn').innerText = t.cta;
+            document.getElementById('hero-tag').innerText = t.heroTag;
+            document.getElementById('hero-title').innerHTML = t.heroTitle;
+            document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.getElementById('hero-footer').innerText = t.heroFooter;
+            document.getElementById('mission-title').innerText = t.missionTitle;
+            document.getElementById('mission-desc').innerText = t.missionDesc;
+            document.getElementById('mission-feat-1').innerText = t.missionFeat1;
+            document.getElementById('mission-feat-2').innerText = t.missionFeat2;
+            document.getElementById('sim-tag').innerText = t.simTag;
+            document.getElementById('sim-start').innerText = t.simStart;
+            document.getElementById('sim-mid').innerText = t.simMid;
+            document.getElementById('sim-end').innerText = t.simEnd;
+            document.getElementById('impact-title').innerText = t.impactTitle;
+            document.getElementById('card1-title').innerText = t.card1Title;
+            document.getElementById('card1-desc').innerText = t.card1Desc;
+            document.getElementById('card2-title').innerText = t.card2Title;
+            document.getElementById('card2-desc').innerText = t.card2Desc;
+            document.getElementById('card3-title').innerText = t.card3Title;
+            document.getElementById('card3-desc').innerText = t.card3Desc;
+            document.getElementById('footer-copy').innerText = t.footerCopy;
+
+            document.getElementById('current-lang-text').innerText = lang.toUpperCase();
+            localStorage.setItem('preferredLang', lang);
+            
+            // Auto close after select
+            langDropdown.classList.remove('show');
+        }
+
+        // --- Standard Scripts ---
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
             if (e.keyCode == 123) return false;
@@ -346,12 +609,18 @@
             missionImg.style.filter = `brightness(${brightness}) saturate(${saturate}) sepia(${sepia})`;
         });
 
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') html.classList.add('dark');
-        updateThemeUI();
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') html.classList.add('dark');
+            updateThemeUI();
+
+            const savedLang = localStorage.getItem('preferredLang') || 'th';
+            changeLanguage(savedLang);
+        };
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                if (this.id === 'cta-btn') return;
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
