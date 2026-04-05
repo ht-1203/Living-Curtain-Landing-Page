@@ -65,7 +65,7 @@
         }
 
         .toggle-dot { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .dark .toggle-dot { transform: translateX(0.875rem); }
+        .dark .toggle-dot { translateX(calc(100% - 2px)); }
 
         .ai-green-glow {
             background: linear-gradient(to right, #2d6a4f 0%, #52b788 25%, #b7e4c7 50%, #52b788 75%, #2d6a4f 100%);
@@ -418,11 +418,16 @@
         }
 
             const themeToggle = document.getElementById('theme-toggle');
-            const html = document.documentElement;
+            const dot = themeToggle.querySelector('.toggle-dot');
 
             themeToggle.onclick = () => {
             html.classList.toggle('dark');
             const isDark = html.classList.contains('dark');
+    
+            // คำนวณระยะจาก container จริง
+            const travel = themeToggle.offsetWidth - dot.offsetWidth - 8; // 8 = padding 2 ข้าง
+            dot.style.transform = isDark ? `translateX(${travel}px)` : 'translateX(0)';
+    
             document.getElementById('theme-icon-inner').innerText = isDark ? '☀️' : '🌙';
             localStorage.setItem('preferredTheme', isDark ? 'dark' : 'light');
         };
