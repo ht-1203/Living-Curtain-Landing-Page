@@ -5,119 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Living Curtain - นิยามใหม่ของการอยู่อาศัยที่ยั่งยืน</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        forest: {
-                            DEFAULT: '#1b4332',
-                            dark: '#52b788'
-                        }
-                    }
-                }
-            }
+            theme: { extend: { colors: { forest: { DEFAULT: '#1b4332', dark: '#52b788' } } } }
         }
     </script>
-    <style>
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Anuphan', sans-serif;
-            transition: background-color 0.5s ease, color 0.5s ease;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-        img {
-            -webkit-touch-callout: none;
-            -webkit-user-drag: none;
-            pointer-events: none; 
-        }
-        section { scroll-margin-top: 80px; }
-
-        .dynamic-island {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-            border-radius: 999px;
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .dark .dynamic-island {
-            background: rgba(24, 24, 27, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-shadow {
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .dark .card-shadow { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); }
-
-        .leaf-float { animation: float 6s ease-in-out infinite; }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .toggle-dot { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-
-        .ai-green-glow {
-            background: linear-gradient(to right, #2d6a4f 0%, #52b788 25%, #b7e4c7 50%, #52b788 75%, #2d6a4f 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: emerald-shift 4s linear infinite, emerald-sparkle 2s ease-in-out infinite alternate;
-            filter: drop-shadow(0 0 8px rgba(82, 183, 136, 0.5));
-            font-weight: 800;
-        }
-        @keyframes emerald-shift { to { background-position: 200% center; } }
-        @keyframes emerald-sparkle {
-            from { filter: drop-shadow(0 0 5px rgba(82, 183, 136, 0.4)); opacity: 0.9; }
-            to { filter: drop-shadow(0 0 15px rgba(183, 228, 199, 0.8)); opacity: 1; }
-        }
-
-        .lang-dropdown {
-            display: none;
-            position: absolute;
-            top: 100%; 
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-            border: 1px solid rgba(0,0,0,0.05);
-            overflow: hidden;
-            min-width: 150px;
-            z-index: 100;
-            margin-top: 12px;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-        .lang-dropdown.show { display: block; opacity: 1; }
-        .dark .lang-dropdown { background: #27272a; border-color: rgba(255,255,255,0.08); }
-        .lang-item { transition: all 0.2s ease; cursor: pointer; }
-        .lang-item:hover { background: #f4f4f5; padding-left: 1.25rem; }
-        .dark .lang-item:hover { background: #3f3f46; }
-
-        .ai-pulse { animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); opacity: 0.5; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-            100% { transform: scale(0.95); opacity: 0.5; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-white text-gray-800 dark:bg-zinc-900 dark:text-gray-100" oncontextmenu="return false;">
 
-   <!-- Navigation -->
+<!-- Navigation -->
 <div class="fixed top-6 left-0 w-full z-50 px-4 md:px-0 flex justify-center">
     <nav class="dynamic-island w-full max-w-[98%] md:max-w-fit px-2 py-2 md:py-2.5 md:px-3 flex justify-between items-center">
-        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center space-x-1 md:space-x-2 cursor-pointer hover:opacity-80 active:scale-95 transition-all px-2">
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center space-x-1 md:space-x-2 cursor-pointer hover:opacity-80 active:scale-95 transition-all px-2">
             <span class="text-xl">🌿</span>
             <span class="text-sm md:text-base font-semibold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
         </button>
@@ -125,22 +27,22 @@
         <div class="flex items-center space-x-2 md:space-x-4">
             <!-- Desktop nav -->
             <div class="hidden md:flex items-center space-x-5 text-sm font-medium text-gray-600 dark:text-gray-300">
-                <a href="#mission" id="nav-mission" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">พันธกิจของเรา</a>
-                <a href="#impact" id="nav-impact" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลลัพธ์ต่อโลก</a>
-                <a href="#" id="nav-pricing" onclick="openPricing(event)" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ราคา</a>
-                <a href="#" id="nav-portfolio" onclick="openPortfolio(event)" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลงานของเรา</a>
+                <a href="#mission"     id="nav-mission"   class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">พันธกิจของเรา</a>
+                <a href="#impact"      id="nav-impact"    class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลลัพธ์ต่อโลก</a>
+                <a href="pricing.html" id="nav-pricing"   class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ราคา</a>
+                <a href="portfolio.html" id="nav-portfolio" class="hover:text-forest dark:hover:text-forest-dark transition-all py-1">ผลงานของเรา</a>
             </div>
 
             <!-- Mobile hamburger -->
             <div class="relative md:hidden">
                 <button id="mobile-menu-btn" class="flex items-center bg-gray-100 dark:bg-zinc-800 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 dark:text-gray-400"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 dark:text-gray-400"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                 </button>
                 <div id="mobile-menu" class="lang-dropdown py-2" style="min-width:180px;">
-                    <a href="#mission" id="nav-mission-m" onclick="closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">พันธกิจของเรา</a>
-                    <a href="#impact" id="nav-impact-m" onclick="closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ผลลัพธ์ต่อโลก</a>
-                    <a href="#" id="nav-pricing-m" onclick="openPricing(event); closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ราคา</a>
-                    <a href="#" id="nav-portfolio-m" onclick="openPortfolio(event); closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ผลงานของเรา</a>
+                    <a href="#mission"       id="nav-mission-m"   onclick="closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">พันธกิจของเรา</a>
+                    <a href="#impact"        id="nav-impact-m"    onclick="closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ผลลัพธ์ต่อโลก</a>
+                    <a href="pricing.html"   id="nav-pricing-m"   onclick="closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ราคา</a>
+                    <a href="portfolio.html" id="nav-portfolio-m" onclick="closeMobileMenu()" class="lang-item px-4 py-2 text-xs font-semibold flex items-center gap-2 text-gray-800 dark:text-gray-100">ผลงานของเรา</a>
                 </div>
             </div>
 
@@ -154,7 +56,7 @@
 
             <div class="relative">
                 <button id="lang-btn" class="flex items-center space-x-1 bg-gray-100 dark:bg-zinc-800 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-zinc-700 transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 dark:text-gray-400"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 dark:text-gray-400"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                     <span id="current-lang-text" class="text-[10px] font-bold text-gray-500 dark:text-gray-400 hidden sm:inline uppercase">TH</span>
                 </button>
                 <div id="lang-dropdown" class="lang-dropdown py-2">
@@ -174,549 +76,133 @@
     </nav>
 </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-16 bg-white dark:bg-zinc-900 overflow-hidden min-h-[90vh] flex items-center">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 lg:gap-16">
-            <div class="md:w-1/2 text-left">
-                <div id="hero-tag" class="inline-block px-4 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full text-xs font-bold mb-4 tracking-widest uppercase whitespace-nowrap">
-                    Sustainable Innovation
-                </div>
-                <h1 id="hero-title" class="text-4xl md:text-5xl font-bold text-forest dark:text-forest-dark leading-tight mb-4 tracking-tight">
-                    เมื่อเทคโนโลยี <span class="ai-green-glow">AI</span> <br>หันมาดูแลธรรมชาติ
-                </h1>
-                <p id="hero-desc" class="text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-md leading-relaxed">
-                    เราเชื่อว่าที่อยู่อาศัยที่ดีที่สุด ไม่ใช่ที่ที่มีเทคโนโลยีมากที่สุด แต่คือที่ที่มนุษย์สามารถอยู่ร่วมกับธรรมชาติ และเทคโนโลยีได้อย่างลงตัว และยั่งยืน
-                </p>
-                <div class="flex items-center space-x-4 text-forest dark:text-forest-dark font-semibold">
-                    <span class="w-12 h-[2px] bg-forest dark:bg-forest-dark"></span>
-                    <span id="hero-footer">ออกแบบเพื่ออนาคต และสุขภาพระยะยาว</span>
-                </div>
+<!-- Hero Section -->
+<section id="home" class="pt-32 pb-16 bg-white dark:bg-zinc-900 overflow-hidden min-h-[90vh] flex items-center">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 lg:gap-16">
+        <div class="md:w-1/2 text-left">
+            <div id="hero-tag" class="inline-block px-4 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-full text-xs font-bold mb-4 tracking-widest uppercase whitespace-nowrap">
+                Sustainable Innovation
             </div>
-            <div class="md:w-1/2 relative">
-                <div class="leaf-float relative z-10 transition-colors shadow-2xl rounded-[40px]">
-                    <div class="aspect-[4/5] bg-gray-50 dark:bg-zinc-800 rounded-[40px] overflow-hidden relative">
-                        <img src="https://raw.githubusercontent.com/ht-1203/Living-Curtain-Landing-Page/main/Main.png" alt="Living Curtain Hero Image" class="object-cover w-full h-full">
-                    </div>
-                </div>
-                <div class="absolute -top-10 -right-10 w-64 h-64 bg-green-200 dark:bg-forest/20 rounded-full blur-[80px] opacity-30"></div>
-                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-forest-dark/20 rounded-full blur-[80px] opacity-20"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mission Section (Target for "พันธกิจของเรา") -->
-    <section id="mission" class="py-12 bg-gray-50/30 dark:bg-zinc-800/20 transition-colors duration-500">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
-                <div class="md:w-1/2 order-2 md:order-1 relative group">
-                    <div class="relative rounded-[40px] overflow-hidden shadow-2xl bg-gray-100 dark:bg-zinc-800 aspect-[4/5]">
-                        <img id="mission-img" src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Plant Wellness" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2 order-1 md:order-2 text-left">
-                    <h2 id="mission-title" class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อชีวิต: คืนสมดุลให้ชีวิตที่เร่งรีบ</h2>
-                    <p id="mission-desc" class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
-                        Living Curtain คือ "ปอด" ของบ้านที่ดูแลตัวเองได้ ทางเราใช้ระบบ AI ในการวิเคราะห์สภาพอากาศเพื่อควบคุมน้ำ และปุ๋ยชีวภาพอย่างแม่นยำ ลดเวลาการดูแล
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-3 mb-8">
-                        <div class="flex items-center space-x-3 p-4 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm">
-                            <span class="text-xl">❄️</span>
-                            <span id="mission-feat-1" class="text-sm font-medium">ลดความเครียด</span>
-                        </div>
-                        <div class="flex items-center space-x-3 p-4 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm">
-                            <span class="text-xl">🍃</span>
-                            <span id="mission-feat-2" class="text-sm font-medium">ฟอกอากาศได้ดีขึ้น</span>
-                        </div>
-                    </div>
-
-                    <!-- AI Air Quality Widget -->
-                    <div class="bg-white dark:bg-zinc-800 p-6 rounded-[32px] border border-gray-100 dark:border-zinc-700/50 shadow-sm relative overflow-hidden">
-                        <div class="flex justify-between items-center mb-6">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-2 h-2 bg-green-500 rounded-full ai-pulse"></div>
-                                <span id="sim-tag" class="text-xs font-bold uppercase tracking-widest text-forest dark:text-forest-dark">AI Air Monitoring</span>
-                            </div>
-                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Real-time Analysis</span>
-                        </div>
-                        <div class="flex items-end justify-between">
-                            <div class="space-y-1">
-                                <p class="text-gray-400 text-[10px] font-bold uppercase">Air Quality Index (AQI)</p>
-                                <div class="flex items-baseline space-x-2">
-                                    <span id="aqi-value" class="text-5xl font-black text-forest dark:text-forest-dark tabular-nums">12</span>
-                                    <span id="aqi-status" class="text-green-500 font-bold text-sm">Excellent</span>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-gray-400 text-[10px] font-bold uppercase">Oxygen Level</p>
-                                <p class="text-xl font-bold text-gray-700 dark:text-gray-200 tabular-nums">+<span id="o2-value">21</span>%</p>
-                            </div>
-                        </div>
-                        <div class="mt-6 h-1 w-full bg-gray-100 dark:bg-zinc-900 rounded-full overflow-hidden">
-                            <div id="aqi-bar" class="h-full bg-forest dark:bg-forest-dark transition-all duration-1000" style="width: 12%"></div>
-                        </div>
-                        <p id="ai-footer-msg" class="mt-4 text-[11px] text-gray-500 dark:text-gray-400 italic">
-                            * AI กำลังปรับปริมาณการคายน้ำของพืชเพื่อความชุ่มชื้นที่เหมาะสม
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Impact Section (Target for "ผลลัพธ์ต่อโลก") -->
-    <section id="impact" class="py-12 bg-white dark:bg-zinc-900 text-center">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 id="impact-title" class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อเรา: ทุกตารางเมตรมีความหมาย</h2>
-            <div class="grid md:grid-cols-3 gap-6 mt-10">
-                <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left group">
-                    <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4">🌍</div>
-                    <h3 id="card1-title" class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Net-Zero Cooling</h3>
-                    <p id="card1-desc" class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ช่วยลดอุณหภูมิบริเวณระเบียงได้ถึง 3-5 องศาเซลเซียส</p>
-                </div>
-                <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left group">
-                    <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4">♻️</div>
-                    <h3 id="card2-title" class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Smart Irrigation</h3>
-                    <p id="card2-desc" class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ประหยัดน้ำมากกว่าการรดน้ำปกติถึง 40% ด้วยระบบไหลเวียน</p>
-                </div>
-                <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left group">
-                    <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4">🦋</div>
-                    <h3 id="card3-title" class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Urban Habitat</h3>
-                    <p id="card3-desc" class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">เพิ่มพื้นที่พักพิงให้สิ่งมีชีวิตเล็กๆ ที่สำคัญต่อเมือง</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 bg-gray-50/30 dark:bg-zinc-900 flex justify-center px-4 border-t border-gray-100 dark:border-zinc-800">
-        <div class="dynamic-island w-fit px-10 py-6 flex flex-col items-center">
-            <div class="flex items-center space-x-2 mb-4 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <span class="text-2xl">🌿</span>
-                <span class="text-xl font-bold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
-            </div>
-            <p id="footer-copy" class="text-[10px] uppercase tracking-[0.1em] text-gray-400 dark:text-zinc-600 font-bold">
-                © 2024 Living Curtain. All Rights Reserved.
+            <h1 id="hero-title" class="text-4xl md:text-5xl font-bold text-forest dark:text-forest-dark leading-tight mb-4 tracking-tight">
+                เมื่อเทคโนโลยี <span class="ai-green-glow">AI</span> <br>หันมาดูแลธรรมชาติ
+            </h1>
+            <p id="hero-desc" class="text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-md leading-relaxed">
+                เราเชื่อว่าที่อยู่อาศัยที่ดีที่สุด ไม่ใช่ที่ที่มีเทคโนโลยีมากที่สุด แต่คือที่ที่มนุษย์สามารถอยู่ร่วมกับธรรมชาติ และเทคโนโลยีได้อย่างลงตัว และยั่งยืน
             </p>
-        </div>
-    </footer>
-
-    <script>
-        const translations = {
-            th: {
-                navMission: "พันธกิจของเรา", navImpact: "ผลลัพธ์ต่อโลก", navPricing: "ราคา", cta: "ปรึกษากับเราฟรี",
-                heroTag: "Sustainable Innovation", heroTitle: 'เมื่อเทคโนโลยี <span class="ai-green-glow">AI</span> <br>หันมาดูแลธรรมชาติ',
-                heroDesc: "เราเชื่อว่าที่อยู่อาศัยที่ดีที่สุด ไม่ใช่ที่ที่มีเทคโนโลยีมากที่สุด แต่คือที่ที่มนุษย์สามารถอยู่ร่วมกับธรรมชาติ และเทคโนโลยีได้อย่างลงตัว และยั่งยืน",
-                heroFooter: "ออกแบบเพื่ออนาคต และสุขภาพระยะยาว",
-                missionTitle: "ดีต่อชีวิต: คืนสมดุลให้ชีวิตที่เร่งรีบ",
-                missionDesc: "Living Curtain คือ \"ปอด\" ของบ้านที่ดูแลตัวเองได้ ทางเราใช้ระบบ AI ในการวิเคราะห์สภาพอากาศเพื่อควบคุมน้ำ และปุ๋ยชีวภาพอย่างแม่นยำ ลดเวลาการดูแล",
-                missionFeat1: "ลดความเครียด", missionFeat2: "ฟอกอากาศได้ดีขึ้น",
-                simTag: "AI Air Monitoring", aqiStatus: "ยอดเยี่ยม", aiFooterMsg: "* AI กำลังปรับปริมาณการคายน้ำของพืชเพื่อความชุ่มชื้นที่เหมาะสม",
-                impactTitle: "ดีต่อเรา: ทุกตารางเมตรมีความหมาย",
-                card1Title: "Net-Zero Cooling", card1Desc: "ช่วยลดอุณหภูมิบริเวณระเบียงได้ถึง 3-5 องศาเซลเซียส",
-                card2Title: "Smart Irrigation", card2Desc: "ประหยัดน้ำมากกว่าการรดน้ำปกติถึง 40% ด้วยระบบไหลเวียน",
-                card3Title: "Urban Habitat", card3Desc: "เพิ่มพื้นที่พักพิงให้สิ่งมีชีวิตเล็กๆ ที่สำคัญต่อเมือง",
-                footerCopy: "© 2024 Living Curtain. สงวนลิขสิทธิ์.",
-                pricingTitle: "เลือกแผนที่ใช่สำหรับคุณ",
-                pricingSubtitle: "ติดตั้งครั้งเดียว ดูแลตัวเองด้วย AI",
-                pricingNote: "* ราคายังไม่รวมค่าบริการรายปี · ติดต่อสอบถามเพิ่มเติมได้เลย",
-                pricingBadge: "แนะนำ",
-                pricingOnce: "ติดตั้งครั้งเดียว",
-                navPortfolio: "ผลงานของเรา",
-                portfolioTitle: "ผลงานของเรา", portfolioSubtitle: "โครงการที่เราภูมิใจ",
-                p1Title: "คอนโด Ideo Sukhumvit", p1Desc: "ระเบียงชั้น 12 · พื้นที่ 3 ม. · AI Monitoring",
-                p2Title: "บ้านเดี่ยว Lat Phrao",  p2Desc: "ระเบียงหน้าบ้าน · พื้นที่ 5 ม. · Pro Plan",
-                p3Title: "Office Silom Tower",     p3Desc: "ผนังสีเขียว · พื้นที่ 8 ม. · Premium Plan",
-                starterFeats: ["พื้นที่สูงสุด 2 ม.", "ระบบรดน้ำอัตโนมัติ", "AI Monitoring", "Bio-fertilizer"],
-                proFeats: ["พื้นที่สูงสุด 4 ม.", "ระบบรดน้ำอัตโนมัติ", "AI Monitoring", "Bio-fertilizer"],
-                premiumFeats: ["พื้นที่ไม่จำกัด", "ระบบรดน้ำอัตโนมัติ", "AI Monitoring", "Bio-fertilizer + Custom"],
-            },
-            en: {
-                navMission: "Our Mission", navImpact: "Global Impact",  navPricing: "Pricing", cta: "Consult for Free",
-                heroTag: "Sustainable Innovation", heroTitle: 'When <span class="ai-green-glow">AI</span> Technology <br>Cares for Nature',
-                heroDesc: "We believe the best home isn't the most high-tech one, but where humans, nature, and technology coexist perfectly and sustainably.",
-                heroFooter: "Designed for the Future and Long-term Wellness",
-                missionTitle: "Good for Life: Restoring Balance",
-                missionDesc: "Living Curtain is your home's self-sustaining \"lungs.\" Our AI analyzes weather conditions to precision-manage water and bio-fertilizers.",
-                missionFeat1: "Reduce Stress", missionFeat2: "Better Air Purification",
-                simTag: "AI Air Monitoring", aqiStatus: "Excellent", aiFooterMsg: "* AI is adjusting transpiration for optimal humidity.",
-                impactTitle: "Good for Us: Every Square Meter Matters",
-                card1Title: "Net-Zero Cooling", card1Desc: "Reduces balcony temperatures by 3-5 degrees Celsius.",
-                card2Title: "Smart Irrigation", card2Desc: "Saves up to 40% more water with recycled systems.",
-                card3Title: "Urban Habitat", card3Desc: "Provides sanctuary for essential urban biodiversity.",
-                footerCopy: "© 2024 Living Curtain. All Rights Reserved.",
-                pricingTitle: "Choose the Right Plan",
-                pricingSubtitle: "One-time install. Self-managed by AI.",
-                pricingNote: "* Price excludes annual service fee · Contact us for more info",
-                pricingBadge: "Recommended",
-                pricingOnce: "One-time install",
-                navPortfolio: "Our Work",
-                portfolioTitle: "Our Work", portfolioSubtitle: "Projects we're proud of",
-                p1Title: "Ideo Sukhumvit Condo", p1Desc: "12th floor balcony · 3m area · AI Monitoring",
-                p2Title: "Lat Phrao House",      p2Desc: "Front balcony · 5m area · Pro Plan",
-                p3Title: "Silom Tower Office",   p3Desc: "Green wall · 8m area · Premium Plan",
-                starterFeats: ["Up to 2m area", "Auto irrigation", "AI Monitoring", "Bio-fertilizer"],
-                proFeats: ["Up to 4m area", "Auto irrigation", "AI Monitoring", "Bio-fertilizer"],
-                premiumFeats: ["Unlimited area", "Auto irrigation", "AI Monitoring", "Bio-fertilizer + Custom"],
-            },
-            zh: {
-                navMission: "我们的使命", navImpact: "全球影响", navPricing: "价格", cta: "免费咨询",
-                heroTag: "可持续创新", heroTitle: '当 <span class="ai-green-glow">人工智能</span> 技术 <br>关爱自然',
-                heroDesc: "我们相信，最好的家园并非技术最先进的地方，而是人类、自然与技术完美和谐共存的地方。",
-                heroFooter: "为未来和长期健康而设计",
-                missionTitle: "利于生活：重拾平衡",
-                missionDesc: "Living Curtain 是您家的自我维持“肺”。我们的 AI 分析天气状况，精确管理水分和生物肥料。",
-                missionFeat1: "减轻压力", missionFeat2: "更好的空气净化",
-                simTag: "AI 空气监测", aqiStatus: "极佳", aiFooterMsg: "* AI 正在调节植物蒸腾作用以实现最佳湿度。",
-                impactTitle: "利于我们：每一平米都有意义",
-                card1Title: "零碳冷却", card1Desc: "可将阳台温度降低 3-5 摄氏度。",
-                card2Title: "智能灌溉", card2Desc: "通过循环灌溉系统节省高达 40% 的用水。",
-                card3Title: "城市生境", card3Desc: "为城市中重要的生物多样性提供栖息地。",
-                footerCopy: "© 2024 Living Curtain. 版权所有。",
-                pricingTitle: "选择适合您的方案",
-                pricingSubtitle: "一次安装，AI 自动管理",
-                pricingNote: "* 价格不含年度服务费 · 如需更多信息请联系我们",
-                pricingBadge: "推荐",
-                pricingOnce: "一次性安装",
-                navPortfolio: "我们的作品",
-                portfolioTitle: "我们的作品", portfolioSubtitle: "我们引以为豪的项目",
-                p1Title: "Ideo Sukhumvit公寓", p1Desc: "12楼阳台 · 3米区域 · AI监测",
-                p2Title: "Lat Phrao独栋别墅",  p2Desc: "前阳台 · 5米区域 · Pro方案",
-                p3Title: "Silom Tower办公室",  p3Desc: "绿化墙 · 8米区域 · Premium方案",
-                starterFeats: ["最多2米区域", "自动灌溉系统", "AI Monitoring", "Bio-fertilizer"],
-                proFeats: ["最多4米区域", "自动灌溉系统", "AI Monitoring", "Bio-fertilizer"],
-                premiumFeats: ["无限区域", "自动灌溉系统", "AI Monitoring", "Bio-fertilizer + Custom"],
-            },
-            ja: {
-                navMission: "ミッション", navImpact: "地球への影響", navPricing: "料金", cta: "無料相談",
-                heroTag: "持続可能なイノベーション", heroTitle: '<span class="ai-green-glow">AI</span> 技術が <br>自然を育む時',
-                heroDesc: "最高の住まいとは最新技術が詰まった場所ではなく、人間と自然、そしてテクノロジーが完璧に調和した場所だと信じています。",
-                heroFooter: "未来と長期的な健康のためのデザイン",
-                missionTitle: "暮らしに豊かさを：バランスの回復",
-                missionDesc: "Living Curtain は家の「肺」です。AIが天候を分析し、水やりや有機肥料を正確に管理します。",
-                missionFeat1: "ストレス軽減", missionFeat2: "空気清浄の向上",
-                simTag: "AI 空気モニタリング", aqiStatus: "非常に良い", aiFooterMsg: "* AIが最適な湿度のために蒸散を調整しています。",
-                impactTitle: "私たちのために：全ての空間に意味を",
-                card1Title: "ネットゼロ・クーリング", card1Desc: "バルコニーの温度を 3-5 度下げることができます。",
-                card2Title: "スマート灌漑", card2Desc: "循環システムにより、通常の水やりより 40% 節水します。",
-                card3Title: "アーバン・ハビタット", card3Desc: "都市の重要な生物多様性のための隠れ家を提供します。",
-                footerCopy: "© 2024 Living Curtain. 無断複写・転載を禁じます。",
-                pricingTitle: "あなたに合ったプランを選ぶ",
-                pricingSubtitle: "一度の設置で、AIが自動管理",
-                pricingNote: "* 年間サービス料は別途 · 詳細はお問い合わせください",
-                pricingBadge: "おすすめ",
-                pricingOnce: "一回限りの設置",
-                navPortfolio: "実績",
-                portfolioTitle: "実績", portfolioSubtitle: "誇りに思うプロジェクト",
-                p1Title: "Ideo Sukhumvitマンション", p1Desc: "12階バルコニー · 3mエリア · AIモニタリング",
-                p2Title: "Lat Phrao一戸建て",        p2Desc: "フロントバルコニー · 5mエリア · Proプラン",
-                p3Title: "Silom Towerオフィス",      p3Desc: "グリーンウォール · 8mエリア · Premiumプラン",
-                starterFeats: ["最大2mのエリア", "自動灌漑システム", "AI Monitoring", "Bio-fertilizer"],
-                proFeats: ["最大4mのエリア", "自動灌漑システム", "AI Monitoring", "Bio-fertilizer"],
-                premiumFeats: ["無制限エリア", "自動灌漑システム", "AI Monitoring", "Bio-fertilizer + Custom"],
-            },
-            de: {
-                navMission: "Mission", navImpact: "Auswirkung", navPricing: "Preise", cta: "Gratis Beratung",
-                heroTag: "Nachhaltige Innovation", heroTitle: 'Wenn <span class="ai-green-glow">KI</span> Technik <br>die Natur pflegt',
-                heroDesc: "Wir glauben, dass das beste Zuhause dort ist, wo Mensch, Natur und Technik nachhaltig koexistieren.",
-                heroFooter: "Design für die Zukunft und langfristiges Wohlbefinden",
-                missionTitle: "Gut fürs Leben: Balance finden",
-                missionDesc: "Living Curtain ist die \"Lunge\" Ihres Hauses. Unsere KI steuert Wasser und Biodünger präzise basierend auf dem Wetter.",
-                missionFeat1: "Stress abbauen", missionFeat2: "Bessere Luftreinigung",
-                simTag: "KI Luftüberwachung", aqiStatus: "Hervorragend", aiFooterMsg: "* KI passt die Transpiration für optimale Feuchtigkeit an.",
-                impactTitle: "Gut für uns: Jeder Meter zählt",
-                card1Title: "Net-Zero Kühlung", card1Desc: "Senkt die Balkontemperatur um 3-5 Grad.",
-                card2Title: "Smarte Bewässerung", card2Desc: "Spart bis zu 40% Wasser durch Kreislaufsysteme.",
-                card3Title: "Lebensraum", card3Desc: "Bietet Schutzraum für städtische Biodiversität.",
-                footerCopy: "© 2024 Living Curtain. Alle Rechte vorbehalten.",
-                pricingTitle: "Wählen Sie den richtigen Plan",
-                pricingSubtitle: "Einmalige Installation. KI-gesteuert.",
-                pricingNote: "* Preis exkl. Jahresgebühr · Kontaktieren Sie uns für mehr Infos",
-                pricingBadge: "Empfohlen",
-                pricingOnce: "Einmalige Installation",
-                navPortfolio: "Unsere Projekte",
-                portfolioTitle: "Unsere Projekte", portfolioSubtitle: "Projekte auf die wir stolz sind",
-                p1Title: "Ideo Sukhumvit Condo", p1Desc: "12. Stock Balkon · 3m Fläche · KI-Überwachung",
-                p2Title: "Lat Phrao Haus",       p2Desc: "Frontbalkon · 5m Fläche · Pro Plan",
-                p3Title: "Silom Tower Büro",     p3Desc: "Grüne Wand · 8m Fläche · Premium Plan",
-                starterFeats: ["Bis zu 2m Fläche", "Automatische Bewässerung", "AI Monitoring", "Bio-fertilizer"],
-                proFeats: ["Bis zu 4m Fläche", "Automatische Bewässerung", "AI Monitoring", "Bio-fertilizer"],
-                premiumFeats: ["Unbegrenzte Fläche", "Automatische Bewässerung", "AI Monitoring", "Bio-fertilizer + Custom"],
-            },
-            fr: {
-                navMission: "Mission", navImpact: "Impact Global",  navPricing: "Tarifs", cta: "Conseil Gratuit",
-                heroTag: "Innovation Durable", heroTitle: 'Quand l\'<span class="ai-green-glow">IA</span> <br>soigne la nature',
-                heroDesc: "La meilleure maison est celle où l'homme, la nature et la technologie coexistent durablement.",
-                heroFooter: "Conçu pour l'avenir et le bien-être à long terme",
-                missionTitle: "Vivre mieux : Retrouver l'équilibre",
-                missionDesc: "Living Curtain est le \"poumon\" de votre maison. Notre IA gère l'eau et les engrais bio avec précision.",
-                missionFeat1: "Réduire le stress", missionFeat2: "Purification de l'air",
-                simTag: "Suivi IA de l'air", aqiStatus: "Excellent", aiFooterMsg: "* L'IA ajuste la transpiration pour une humidité optimale.",
-                impactTitle: "Pour nous : Chaque mètre carré compte",
-                card1Title: "Refroidissement Net-Zero", card1Desc: "Réduit la température de 3 à 5 degrés.",
-                card2Title: "Irrigation Intelligente", card2Desc: "Économise 40% d'eau grâce au recyclage.",
-                card3Title: "Habitat Urbain", card3Desc: "Sanctuaire pour la biodiversité urbaine.",
-                footerCopy: "© 2024 Living Curtain. Tous droits réservés.",
-                pricingTitle: "Choisissez le bon plan",
-                pricingSubtitle: "Installation unique. Géré par l'IA.",
-                pricingNote: "* Prix hors frais annuels · Contactez-nous pour plus d'infos",
-                pricingBadge: "Recommandé",
-                pricingOnce: "Installation unique",
-                navPortfolio: "Nos Réalisations",
-                portfolioTitle: "Nos Réalisations", portfolioSubtitle: "Des projets dont nous sommes fiers",
-                p1Title: "Condo Ideo Sukhumvit", p1Desc: "Balcon 12e étage · 3m · Surveillance IA",
-                p2Title: "Maison Lat Phrao",     p2Desc: "Balcon avant · 5m · Plan Pro",
-                p3Title: "Bureau Silom Tower",   p3Desc: "Mur végétal · 8m · Plan Premium",
-                starterFeats: ["Jusqu'à 2m de surface", "Irrigation automatique", "AI Monitoring", "Bio-fertilizer"],
-                proFeats: ["Jusqu'à 4m de surface", "Irrigation automatique", "AI Monitoring", "Bio-fertilizer"],
-                premiumFeats: ["Surface illimitée", "Irrigation automatique", "AI Monitoring", "Bio-fertilizer + Custom"],
-            }
-        };
-
-        const langBtn = document.getElementById('lang-btn');
-        const langDropdown = document.getElementById('lang-dropdown');
-
-        langBtn.onclick = (e) => { e.stopPropagation(); langDropdown.classList.toggle('show'); };
-        window.onclick = () => langDropdown.classList.remove('show');
-
-        function changeLanguage(lang) {
-            const t = translations[lang] || translations['en'];
-            document.getElementById('nav-mission').innerText = t.navMission;
-            document.getElementById('nav-impact').innerText = t.navImpact;
-            document.getElementById('nav-pricing').innerText = t.navPricing;
-            document.getElementById('nav-mission-m').innerText = t.navMission;
-            document.getElementById('nav-impact-m').innerText = t.navImpact;
-            document.getElementById('nav-pricing-m').innerText = t.navPricing;
-            document.getElementById('nav-portfolio').innerText   = t.navPortfolio;
-            document.getElementById('nav-portfolio-m').innerText = t.navPortfolio;
-            document.getElementById('portfolio-title').innerText    = t.portfolioTitle;
-            document.getElementById('portfolio-subtitle').innerText = t.portfolioSubtitle;
-            document.getElementById('p1-title').innerText = t.p1Title;
-            document.getElementById('p1-desc').innerText  = t.p1Desc;
-            document.getElementById('p2-title').innerText = t.p2Title;
-            document.getElementById('p2-desc').innerText  = t.p2Desc;
-            document.getElementById('p3-title').innerText = t.p3Title;
-            document.getElementById('p3-desc').innerText  = t.p3Desc;
-            document.getElementById('pricing-title').innerText = t.pricingTitle;
-            document.getElementById('pricing-subtitle').innerText = t.pricingSubtitle;
-            document.getElementById('pricing-badge').innerText = t.pricingBadge;
-            document.getElementById('pricing-note').innerText = t.pricingNote;
-            document.querySelectorAll('.pricing-once').forEach(el => el.innerText = t.pricingOnce);
-            const uls = document.querySelectorAll('#pricing-modal ul');
-            t.starterFeats.forEach((feat, i) => uls[0].children[i].innerText = ['✅','✅','❌','❌'][i] + ' ' + feat);
-            t.proFeats.forEach((feat, i) => uls[1].children[i].innerText = '✅ ' + feat);
-            t.premiumFeats.forEach((feat, i) => uls[2].children[i].innerText = '✅ ' + feat);
-            
-            document.getElementById('cta-btn').innerText = t.cta;
-            document.getElementById('hero-tag').innerText = t.heroTag;
-            document.getElementById('hero-title').innerHTML = t.heroTitle;
-            document.getElementById('hero-desc').innerText = t.heroDesc;
-            document.getElementById('hero-footer').innerText = t.heroFooter;
-            document.getElementById('mission-title').innerText = t.missionTitle;
-            document.getElementById('mission-desc').innerText = t.missionDesc;
-            document.getElementById('mission-feat-1').innerText = t.missionFeat1;
-            document.getElementById('mission-feat-2').innerText = t.missionFeat2;
-            document.getElementById('sim-tag').innerText = t.simTag;
-            document.getElementById('aqi-status').innerText = t.aqiStatus;
-            document.getElementById('ai-footer-msg').innerText = t.aiFooterMsg;
-            document.getElementById('impact-title').innerText = t.impactTitle;
-            document.getElementById('card1-title').innerText = t.card1Title;
-            document.getElementById('card1-desc').innerText = t.card1Desc;
-            document.getElementById('card2-title').innerText = t.card2Title;
-            document.getElementById('card2-desc').innerText = t.card2Desc;
-            document.getElementById('card3-title').innerText = t.card3Title;
-            document.getElementById('card3-desc').innerText = t.card3Desc;
-            document.getElementById('footer-copy').innerText = t.footerCopy;
-            document.getElementById('current-lang-text').innerText = lang.toUpperCase();
-            localStorage.setItem('preferredLang', lang);
-            langDropdown.classList.remove('show'); // ปิด dropdown หลังเลือก
-        }
-
-            const themeToggle = document.getElementById('theme-toggle');
-            const dot = themeToggle.querySelector('.toggle-dot');
-            const html = document.documentElement;
-
-            themeToggle.onclick = () => {
-            html.classList.toggle('dark');
-            const isDark = html.classList.contains('dark');
-    
-            const travel = themeToggle.offsetWidth - dot.offsetWidth - 8;
-            dot.style.transform = isDark ? `translateX(${travel}px)` : 'translateX(0)';
-    
-            document.getElementById('theme-icon-inner').innerText = isDark ? '☀️' : '🌙';
-            localStorage.setItem('preferredTheme', isDark ? 'dark' : 'light');
-        };
-
-        window.addEventListener('scroll', () => {
-        localStorage.setItem('scrollPos', window.scrollY);
-        });
-
-        function openGoogleForm(e) { e.preventDefault(); window.open('https://forms.gle/mKosqSVN2EjaukXx8', '_blank'); }
-
-        setInterval(() => {
-            const aqiVal = document.getElementById('aqi-value');
-            const o2Val = document.getElementById('o2-value');
-            const aqiBar = document.getElementById('aqi-bar');
-            if (aqiVal && o2Val && aqiBar) {
-                const currentAQI = Math.floor(Math.random() * 8) + 8;
-                aqiVal.innerText = currentAQI;
-                o2Val.innerText = Math.floor(Math.random() * 5) + 20;
-                aqiBar.style.width = `${currentAQI}%`;
-            }
-        }, 3000);
-
-        // Fix: Improved Smooth Scroll Script
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-
-        window.onload = () => {
-            const savedLang = localStorage.getItem('preferredLang') || 'th';
-            changeLanguage(savedLang);
-
-            const savedTheme = localStorage.getItem('preferredTheme');
-            if (savedTheme === 'dark') {
-                html.classList.add('dark');
-                document.getElementById('theme-icon-inner').innerText = '☀️';
-                requestAnimationFrame(() => {
-                    dot.style.transition = 'none';
-                    const travel = themeToggle.offsetWidth - dot.offsetWidth - 8;
-                    dot.style.transform = `translateX(${travel}px)`;
-                    setTimeout(() => dot.style.transition = '', 50);
-                });
-            }
-        };
-
-            function openPricing(e) {
-            e.preventDefault();
-            const modal = document.getElementById('pricing-modal');
-            modal.style.display = 'flex';
-            }
-function closePricing() {
-    document.getElementById('pricing-modal').style.display = 'none';
-        }
-
-
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-mobileMenuBtn.onclick = (e) => { e.stopPropagation(); mobileMenu.classList.toggle('show'); };
-function closeMobileMenu() { mobileMenu.classList.remove('show'); }
-window.addEventListener('click', () => mobileMenu.classList.remove('show'));
-
-
-        function openPortfolio(e) {
-    e.preventDefault();
-    document.getElementById('portfolio-modal').style.display = 'flex';
-}
-function closePortfolio() {
-    document.getElementById('portfolio-modal').style.display = 'none';
-}
-
-    </script>
-
-        <!-- Pricing Modal -->
-<div id="pricing-modal" class="fixed inset-0 z-[999] flex items-center justify-center px-4" style="display:none;">
-    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closePricing()"></div>
-    <div class="relative bg-white dark:bg-zinc-900 rounded-[40px] shadow-2xl p-5 md:p-8 max-w-3xl w-full z-10 overflow-y-auto max-h-[90vh]">
-        <button onclick="closePricing()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl">✕</button>
-        <h2 class="text-2xl font-bold text-forest dark:text-forest-dark mb-2 text-center" id="pricing-title">เลือกแผนที่ใช่สำหรับคุณ</h2>
-        <p class="text-gray-400 text-sm text-center mb-8" id="pricing-subtitle">ติดตั้งครั้งเดียว ดูแลตัวเองด้วย AI</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <!-- Starter -->
-            <div class="border border-gray-100 dark:border-zinc-700 rounded-[28px] p-4 md:p-6 text-left">
-                <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Starter</p>
-                <p class="text-3xl font-black text-forest dark:text-forest-dark mb-1">฿12,900</p>
-                <p class="text-xs text-gray-400 mb-4 pricing-once">ติดตั้งครั้งเดียว</p>
-                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
-                    <li>✅ พื้นที่สูงสุด 2 ม.</li>
-                    <li>✅ ระบบรดน้ำอัตโนมัติ</li>
-                    <li>❌ AI Monitoring</li>
-                    <li>❌ Bio-fertilizer</li>
-                </ul>
-            </div>
-            <!-- Pro (Highlight) -->
-            <div class="bg-forest dark:bg-forest-dark rounded-[28px] p-4 md:p-6 text-left text-white relative">
-                <span id="pricing-badge" class="absolute top-4 right-4 text-[10px] font-bold bg-white/20 px-2 py-1 rounded-full">แนะนำ</span>
-                <p class="text-xs font-bold uppercase tracking-widest opacity-70 mb-2">Pro</p>
-                <p class="text-3xl font-black mb-1">฿24,900</p>
-                <p class="text-xs opacity-60 mb-4 pricing-once">ติดตั้งครั้งเดียว</p>
-                <ul class="text-sm space-y-2 opacity-90">
-                    <li>✅ พื้นที่สูงสุด 4 ม.</li>
-                    <li>✅ ระบบรดน้ำอัตโนมัติ</li>
-                    <li>✅ AI Monitoring</li>
-                    <li>✅ Bio-fertilizer</li>
-                </ul>
-            </div>
-            <!-- Premium -->
-            <div class="border border-gray-100 dark:border-zinc-700 rounded-[28px] p-4 md:p-6 text-left">
-                <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Premium</p>
-                <p class="text-3xl font-black text-forest dark:text-forest-dark mb-1">฿39,900</p>
-                <p class="text-xs text-gray-400 mb-4 pricing-once">ติดตั้งครั้งเดียว</p>
-                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
-                    <li>✅ พื้นที่ไม่จำกัด</li>
-                    <li>✅ ระบบรดน้ำอัตโนมัติ</li>
-                    <li>✅ AI Monitoring</li>
-                    <li>✅ Bio-fertilizer + Custom</li>
-                </ul>
+            <div class="flex items-center space-x-4 text-forest dark:text-forest-dark font-semibold">
+                <span class="w-12 h-[2px] bg-forest dark:bg-forest-dark"></span>
+                <span id="hero-footer">ออกแบบเพื่ออนาคต และสุขภาพระยะยาว</span>
             </div>
         </div>
-        <p id="pricing-note" class="text-center text-xs text-gray-400 mt-6">* ราคายังไม่รวมค่าบริการรายปี · ติดต่อสอบถามเพิ่มเติมได้เลย</p>
+        <div class="md:w-1/2 relative">
+            <div class="leaf-float relative z-10 transition-colors shadow-2xl rounded-[40px]">
+                <div class="aspect-[4/5] bg-gray-50 dark:bg-zinc-800 rounded-[40px] overflow-hidden relative">
+                    <img src="https://raw.githubusercontent.com/ht-1203/Living-Curtain-Landing-Page/main/Main.png" alt="Living Curtain Hero Image" class="object-cover w-full h-full">
+                </div>
+            </div>
+            <div class="absolute -top-10 -right-10 w-64 h-64 bg-green-200 dark:bg-forest/20 rounded-full blur-[80px] opacity-30"></div>
+            <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-forest-dark/20 rounded-full blur-[80px] opacity-20"></div>
+        </div>
     </div>
-</div>
-                <!-- Portfolio Modal -->
-<div id="portfolio-modal" class="fixed inset-0 z-[999] flex items-center justify-center px-4" style="display:none;">
-    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closePortfolio()"></div>
-    <div class="relative bg-white dark:bg-zinc-900 rounded-[40px] shadow-2xl p-5 md:p-8 max-w-3xl w-full z-10 overflow-y-auto max-h-[90vh]">
-        <button onclick="closePortfolio()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl">✕</button>
-        <h2 id="portfolio-title" class="text-2xl font-bold text-forest dark:text-forest-dark mb-2 text-center">ผลงานของเรา</h2>
-        <p  id="portfolio-subtitle" class="text-gray-400 text-sm text-center mb-8">โครงการที่เราภูมิใจ</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <!-- Project 1 -->
-            <div class="border border-gray-100 dark:border-zinc-700 rounded-[28px] overflow-hidden">
-                <div class="aspect-[4/3] bg-gray-100 dark:bg-zinc-800">
-                    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <p id="p1-title" class="font-bold text-forest dark:text-forest-dark text-sm mb-1">คอนโด Ideo Sukhumvit</p>
-                    <p id="p1-desc" class="text-xs text-gray-400">ระเบียงชั้น 12 · พื้นที่ 3 ม. · AI Monitoring</p>
+</section>
+
+<!-- Mission Section -->
+<section id="mission" class="py-12 bg-gray-50/30 dark:bg-zinc-800/20 transition-colors duration-500">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
+            <div class="md:w-1/2 order-2 md:order-1 relative group">
+                <div class="relative rounded-[40px] overflow-hidden shadow-2xl bg-gray-100 dark:bg-zinc-800 aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Plant Wellness" class="w-full h-full object-cover">
                 </div>
             </div>
-            <!-- Project 2 -->
-            <div class="border border-gray-100 dark:border-zinc-700 rounded-[28px] overflow-hidden">
-                <div class="aspect-[4/3] bg-gray-100 dark:bg-zinc-800">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
+            <div class="md:w-1/2 order-1 md:order-2 text-left">
+                <h2 id="mission-title" class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อชีวิต: คืนสมดุลให้ชีวิตที่เร่งรีบ</h2>
+                <p id="mission-desc" class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-lg">
+                    Living Curtain คือ "ปอด" ของบ้านที่ดูแลตัวเองได้ ทางเราใช้ระบบ AI ในการวิเคราะห์สภาพอากาศเพื่อควบคุมน้ำ และปุ๋ยชีวภาพอย่างแม่นยำ ลดเวลาการดูแล
+                </p>
+                <div class="grid grid-cols-2 gap-3 mb-8">
+                    <div class="flex items-center space-x-3 p-4 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm">
+                        <span class="text-xl">❄️</span>
+                        <span id="mission-feat-1" class="text-sm font-medium">ลดความเครียด</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-4 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm">
+                        <span class="text-xl">🍃</span>
+                        <span id="mission-feat-2" class="text-sm font-medium">ฟอกอากาศได้ดีขึ้น</span>
+                    </div>
                 </div>
-                <div class="p-4">
-                    <p id="p2-title" class="font-bold text-forest dark:text-forest-dark text-sm mb-1">บ้านเดี่ยว Lat Phrao</p>
-                    <p id="p2-desc" class="text-xs text-gray-400">ระเบียงหน้าบ้าน · พื้นที่ 5 ม. · Pro Plan</p>
-                </div>
-            </div>
-            <!-- Project 3 -->
-            <div class="border border-gray-100 dark:border-zinc-700 rounded-[28px] overflow-hidden">
-                <div class="aspect-[4/3] bg-gray-100 dark:bg-zinc-800">
-                    <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
-                </div>
-                <div class="p-4">
-                    <p id="p3-title" class="font-bold text-forest dark:text-forest-dark text-sm mb-1">Office Silom Tower</p>
-                    <p id="p3-desc" class="text-xs text-gray-400">ผนังสีเขียว · พื้นที่ 8 ม. · Premium Plan</p>
+
+                <!-- AI Air Quality Widget -->
+                <div class="bg-white dark:bg-zinc-800 p-6 rounded-[32px] border border-gray-100 dark:border-zinc-700/50 shadow-sm relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full ai-pulse"></div>
+                            <span id="sim-tag" class="text-xs font-bold uppercase tracking-widest text-forest dark:text-forest-dark">AI Air Monitoring</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Real-time Analysis</span>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <div class="space-y-1">
+                            <p class="text-gray-400 text-[10px] font-bold uppercase">Air Quality Index (AQI)</p>
+                            <div class="flex items-baseline space-x-2">
+                                <span id="aqi-value" class="text-5xl font-black text-forest dark:text-forest-dark tabular-nums">12</span>
+                                <span id="aqi-status" class="text-green-500 font-bold text-sm">Excellent</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-gray-400 text-[10px] font-bold uppercase">Oxygen Level</p>
+                            <p class="text-xl font-bold text-gray-700 dark:text-gray-200 tabular-nums">+<span id="o2-value">21</span>%</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 h-1 w-full bg-gray-100 dark:bg-zinc-900 rounded-full overflow-hidden">
+                        <div id="aqi-bar" class="h-full bg-forest dark:bg-forest-dark transition-all duration-1000" style="width:12%"></div>
+                    </div>
+                    <p id="ai-footer-msg" class="mt-4 text-[11px] text-gray-500 dark:text-gray-400 italic">
+                        * AI กำลังปรับปริมาณการคายน้ำของพืชเพื่อความชุ่มชื้นที่เหมาะสม
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-</div>
-    
+</section>
+
+<!-- Impact Section -->
+<section id="impact" class="py-12 bg-white dark:bg-zinc-900 text-center">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 id="impact-title" class="text-2xl md:text-3xl font-bold text-forest dark:text-forest-dark mb-4">ดีต่อเรา: ทุกตารางเมตรมีความหมาย</h2>
+        <div class="grid md:grid-cols-3 gap-6 mt-10">
+            <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left">
+                <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4">🌍</div>
+                <h3 id="card1-title" class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Net-Zero Cooling</h3>
+                <p id="card1-desc" class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ช่วยลดอุณหภูมิบริเวณระเบียงได้ถึง 3-5 องศาเซลเซียส</p>
+            </div>
+            <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left">
+                <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4">♻️</div>
+                <h3 id="card2-title" class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Smart Irrigation</h3>
+                <p id="card2-desc" class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">ประหยัดน้ำมากกว่าการรดน้ำปกติถึง 40% ด้วยระบบไหลเวียน</p>
+            </div>
+            <div class="bg-gray-50/50 dark:bg-zinc-800/40 p-8 rounded-[32px] card-shadow border border-gray-100 dark:border-zinc-700/30 text-left">
+                <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-xl mb-4">🦋</div>
+                <h3 id="card3-title" class="text-xl font-bold text-forest dark:text-forest-dark mb-2">Urban Habitat</h3>
+                <p id="card3-desc" class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">เพิ่มพื้นที่พักพิงให้สิ่งมีชีวิตเล็กๆ ที่สำคัญต่อเมือง</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-12 bg-gray-50/30 dark:bg-zinc-900 flex justify-center px-4 border-t border-gray-100 dark:border-zinc-800">
+    <div class="dynamic-island w-fit px-10 py-6 flex flex-col items-center">
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center space-x-2 mb-4 cursor-pointer hover:opacity-80 transition-opacity">
+            <span class="text-2xl">🌿</span>
+            <span class="text-xl font-bold text-forest dark:text-forest-dark tracking-tight">Living Curtain</span>
+        </button>
+        <p id="footer-copy" class="text-[10px] uppercase tracking-[0.1em] text-gray-400 dark:text-zinc-600 font-bold">
+            © 2024 Living Curtain. All Rights Reserved.
+        </p>
+    </div>
+</footer>
+
+<script src="js/translations.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
