@@ -126,14 +126,9 @@ function highlightNav() {
 
 // Theme toggle
 if (themeToggle) {
-    const dot = themeToggle.querySelector('.toggle-dot');
     themeToggle.addEventListener('click', () => {
         html.classList.toggle('dark');
         const isDark = html.classList.contains('dark');
-        if (dot) {
-            const travel = themeToggle.offsetWidth - dot.offsetWidth - 8;
-            dot.style.transform = isDark ? `translateX(${travel}px)` : 'translateX(0)';
-        }
         const iconEl = document.getElementById('theme-icon-inner');
         if (iconEl) iconEl.innerText = isDark ? '☀️' : '🌙';
         localStorage.setItem('preferredTheme', isDark ? 'dark' : 'light');
@@ -193,28 +188,18 @@ function initializePreferences() {
         return;
     }
 
-    // Apply theme dot and icon if dark mode is on
+    // Apply icon if dark mode is on (dot position is handled by CSS)
     if (html.classList.contains('dark')) {
         const iconEl = document.getElementById('theme-icon-inner');
         if (iconEl) iconEl.innerText = '☀️';
-        if (themeToggle) {
-            const dot = themeToggle.querySelector('.toggle-dot');
-            if (dot) {
-                const travel = themeToggle.offsetWidth - dot.offsetWidth - 8;
-                dot.style.transform = `translateX(${travel}px)`;
-            }
-        }
     }
 
-    // Load language preferences (from early head script or default)
-    const savedLang = window.savedLang || localStorage.getItem('preferredLang') || 'th';
+    // Load language preferences
+    const savedLang = localStorage.getItem('preferredLang') || 'th';
     changeLanguage(savedLang);
     
     // Apply navigation highlighting
     highlightNav();
 }
 
-// Start initialization on DOMContentLoaded
 window.addEventListener('DOMContentLoaded', initializePreferences);
-// Also try on load event as fallback
-window.addEventListener('load', initializePreferences);
