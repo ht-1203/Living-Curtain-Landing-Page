@@ -86,6 +86,7 @@ function changeLanguage(lang) {
         setInner('p' + i + '-desc',  t['p' + i + 'Desc']);
     }
 
+    // Save language and close dropdown
     localStorage.setItem('preferredLang', lang);
     const dd = document.getElementById('lang-dropdown');
     if (dd) dd.classList.remove('show');
@@ -104,6 +105,24 @@ const langBtn      = document.getElementById('lang-btn');
 const langDropdown = document.getElementById('lang-dropdown');
 const mobileMenuBtn= document.getElementById('mobile-menu-btn');
 const mobileMenu   = document.getElementById('mobile-menu');
+
+// Active nav highlight — remove old active states and add new one based on current page
+function highlightNav() {
+    // Remove all active states first
+    document.querySelectorAll('[id^="nav-"]').forEach(el => el.classList.remove('nav-active'));
+    
+    // Highlight correct page
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes('pricing.html'))   {
+        document.getElementById('nav-pricing')?.classList.add('nav-active');
+        document.getElementById('nav-pricing-m')?.classList.add('nav-active');
+    } else if (path.includes('portfolio.html')) {
+        document.getElementById('nav-portfolio')?.classList.add('nav-active');
+        document.getElementById('nav-portfolio-m')?.classList.add('nav-active');
+    } else {
+        // Home page - no highlight needed, but we could highlight mission if on home
+    }
+}
 
 // Theme toggle
 if (themeToggle) {
@@ -143,13 +162,6 @@ window.addEventListener('click', () => {
     if (mobileMenu)   mobileMenu.classList.remove('show');
 });
 
-// Active nav highlight
-(function highlightNav() {
-    const path = window.location.pathname;
-    if (path.includes('pricing'))   document.getElementById('nav-pricing')?.classList.add('nav-active');
-    if (path.includes('portfolio')) document.getElementById('nav-portfolio')?.classList.add('nav-active');
-})();
-
 // AQI live widget — only on index.html
 const _aqiInterval = setInterval(() => {
     const aqiVal = document.getElementById('aqi-value');
@@ -165,25 +177,44 @@ const _aqiInterval = setInterval(() => {
 // Scroll save — index.html
 window.addEventListener('scroll', () => localStorage.setItem('scrollPos', window.scrollY));
 
-// Load saved preferences
-window.addEventListener('load', () => {
-    const savedLang = localStorage.getItem('preferredLang') || 'th';
-    changeLanguage(savedLang);
-
+// Restore theme immediately before DOM is fully painted (synchronously)
+(function restoreThemeBeforeRender() {
     if (localStorage.getItem('preferredTheme') === 'dark') {
         html.classList.add('dark');
+    }
+})();
+
+// Wait for translations to load, then apply preferences
+function initializePreferences() {
+    // Check if translations are available
+    if (typeof translations === 'undefined') {
+        // Wait 100ms and try again
+        setTimeout(initializePreferences, 100);
+        return;
+    }
+
+    // Apply theme dot and icon if dark mode is on
+    if (html.classList.contains('dark')) {
         const iconEl = document.getElementById('theme-icon-inner');
         if (iconEl) iconEl.innerText = '☀️';
         if (themeToggle) {
             const dot = themeToggle.querySelector('.toggle-dot');
             if (dot) {
-                requestAnimationFrame(() => {
-                    dot.style.transition = 'none';
-                    const travel = themeToggle.offsetWidth - dot.offsetWidth - 8;
-                    dot.style.transform = `translateX(${travel}px)`;
-                    setTimeout(() => { dot.style.transition = ''; }, 50);
-                });
+                const travel = themeToggle.offsetWidth - dot.offsetWidth - 8;
+                dot.style.transform = `translateX(${travel}px)`;
             }
         }
     }
-});
+
+    // Load language preferences (from early head script or default)
+    const savedLang = window.savedLang || localStorage.getItem('preferredLang') || 'th';
+    changeLanguage(savedLang);
+    
+    // Apply navigation highlighting
+    highlightNav();
+}
+
+// Start initialization on DOMContentLoaded
+window.addEventListener('DOMContentLoaded', initializePreferences);
+// Also try on load event as fallback
+window.addEventListener('load', initializePreferences);
